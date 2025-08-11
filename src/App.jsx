@@ -13,6 +13,8 @@ import RegistrationPage from "./pages/RegistrationPage";
 import PaymentConfirmationPage from "./pages/PaymentConfirmationPage";
 import Dashboard from "./pages/Dashboard";
 import Navbar from "./components/Navbar";
+import AdminLogin from "./pages/Admin/AdminLogin";
+import Layout from "./components/Layout";
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -29,29 +31,51 @@ const ProtectedRoute = ({ children }) => {
   return user ? children : <Navigate to="/login" />;
 };
 
+const AdminProtectedRoute = ({ children }) => {
+  const { admin, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      </div>
+    );
+  }
+
+  return admin ? children : <Navigate to="/admin-login" />;
+};
+
 // Main App Component
 const App = () => {
   return (
     <Router>
       <AuthProvider>
         <div className="min-h-screen bg-gray-50">
-          <Navbar />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/courses" element={<CoursesPage />} />
-            <Route path="/course/:id" element={<CourseDetailsPage />} />
-            <Route path="/register/:courseId" element={<RegistrationPage />} />
+            <Route path="/course/:slug" element={<CourseDetailsPage />} />
+            <Route path="/register/:slug" element={<RegistrationPage />} />
             <Route
-              path="/payment-confirmation/:courseId"
+              path="/payment-confirmation/:slug"
               element={<PaymentConfirmationPage />}
             />
             <Route
               path="/dashboard"
               element={
-                // <ProtectedRoute>
-                <Dashboard />
-                // </ProtectedRoute>
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/admin-login" element={<AdminLogin />} />
+            <Route
+              path="/admin/*"
+              element={
+                <AdminProtectedRoute>
+                  <Layout />
+                </AdminProtectedRoute>
               }
             />
           </Routes>

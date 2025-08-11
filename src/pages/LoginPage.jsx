@@ -29,7 +29,7 @@ const LoginPage = () => {
       const response = await axiosInstance.post("/auth/send-otp", { phone });
       if (response.data.success) {
         setOtpSent(true);
-        setMessage("OTP sent successfully");
+        setMessage(`Your OTP is ${response.data.otp}`);
       }
     } catch (error) {
       setMessage(error.response?.data?.message || "Failed to send OTP");

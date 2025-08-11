@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
+import axiosInstance from "../utils/axios";
 
 const AuthContext = createContext();
 
@@ -23,7 +24,7 @@ export const AuthProvider = ({ children }) => {
   const checkAuthStatus = async () => {
     try {
       // Check user auth
-      const userResponse = await axios.get("/auth/me");
+      const userResponse = await axiosInstance.get("/auth/me");
       if (userResponse.data.success) {
         setUser(userResponse.data.user);
       }
@@ -33,12 +34,14 @@ export const AuthProvider = ({ children }) => {
 
     try {
       // Check admin auth
-      const adminResponse = await axios.get("/admin/me");
+      const adminResponse = await axiosInstance.get("/admin/me");
+      console.log(adminResponse.data);
       if (adminResponse.data.success) {
         setAdmin(adminResponse.data.admin);
       }
     } catch (error) {
       // Admin not authenticated
+      console.error("Admin auth error:", error);
     }
 
     setLoading(false);
@@ -50,7 +53,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await axios.post("/auth/logout");
+      await axiosInstance.post("/auth/logout");
       setUser(null);
     } catch (error) {
       console.error("Logout error:", error);
@@ -63,7 +66,7 @@ export const AuthProvider = ({ children }) => {
 
   const adminLogout = async () => {
     try {
-      await axios.post("/admin/logout");
+      await axiosInstance.post("/admin/logout");
       setAdmin(null);
     } catch (error) {
       console.error("Admin logout error:", error);

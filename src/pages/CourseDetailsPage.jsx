@@ -5,7 +5,7 @@ import { AlertCircle, Clock } from "lucide-react";
 import axiosInstance from "../utils/axios";
 
 const CourseDetailsPage = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const { user } = useAuth();
   const navigate = useNavigate();
   const [course, setCourse] = useState(null);
@@ -13,11 +13,11 @@ const CourseDetailsPage = () => {
 
   useEffect(() => {
     fetchCourse();
-  }, [id]);
+  }, [slug]);
 
   const fetchCourse = async () => {
     try {
-      const response = await axiosInstance.get(`/courses/${id}`);
+      const response = await axiosInstance.get(`/courses/${slug}`);
       if (response.data.success) {
         setCourse(response.data.course);
       }
@@ -33,7 +33,7 @@ const CourseDetailsPage = () => {
     //   navigate("/login");
     //   return;
     // }
-    navigate(`/register/${id}`);
+    navigate(`/register/${slug}`);
   };
 
   if (loading) {

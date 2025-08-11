@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../utils/axios";
 
 const RegistrationPage = () => {
-  const { courseId } = useParams();
+  const { slug } = useParams();
   const navigate = useNavigate();
   const [course, setCourse] = useState(null);
   const [formData, setFormData] = useState({
@@ -21,11 +21,11 @@ const RegistrationPage = () => {
 
   useEffect(() => {
     fetchCourse();
-  }, [courseId]);
+  }, [slug]);
 
   const fetchCourse = async () => {
     try {
-      const response = await axiosInstance.get(`/courses/${courseId}`);
+      const response = await axiosInstance.get(`/courses/${slug}`);
       if (response.data.success) {
         setCourse(response.data.course);
       }
@@ -52,13 +52,13 @@ const RegistrationPage = () => {
         "/enrollments/create-enrollment",
         {
           ...formData,
-          courseId: courseId,
+          courseId: slug,
         }
       );
 
       if (response.data.success) {
         localStorage.setItem("enrollmentId", response.data.enrollmentId);
-        navigate(`/payment-confirmation/${courseId}`);
+        navigate(`/payment-confirmation/${slug}`);
       }
     } catch (error) {
       setMessage(error.response?.data?.message || "Registration failed");

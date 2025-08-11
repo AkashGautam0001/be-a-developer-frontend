@@ -1,11 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import axiosInstance from "../utils/axios";
-import { LogOut, User } from "lucide-react";
+import { BookOpen, LogOut, User } from "lucide-react";
 
 const Navbar = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+
+  console.log("Navbar user:", user);
 
   const handleLogout = async () => {
     try {

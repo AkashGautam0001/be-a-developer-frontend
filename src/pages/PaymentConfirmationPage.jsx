@@ -4,7 +4,7 @@ import axiosInstance from "../utils/axios";
 import { CheckCircle, CreditCard } from "lucide-react";
 
 const PaymentConfirmationPage = () => {
-  const { courseId } = useParams();
+  const { slug } = useParams();
   const navigate = useNavigate();
   const [course, setCourse] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -23,11 +23,11 @@ const PaymentConfirmationPage = () => {
         document.body.removeChild(script);
       }
     };
-  }, [courseId]);
+  }, [slug]);
 
   const fetchCourse = async () => {
     try {
-      const response = await axiosInstance.get(`/courses/${courseId}`);
+      const response = await axiosInstance.get(`/courses/${slug}`);
       if (response.data.success) {
         setCourse(response.data.course);
       }
