@@ -15,6 +15,14 @@ import Dashboard from "./pages/Dashboard";
 import Navbar from "./components/Navbar";
 import AdminLogin from "./pages/Admin/AdminLogin";
 import Layout from "./components/Layout";
+import ReactNative from "./pages/course_pages/ReactNative";
+import FlutterCourseLanding from "./pages/course_pages/Flutter";
+import GenAIWebinarLanding from "./pages/course_pages/GenAi";
+import JavaSpringBootWebinar from "./pages/course_pages/Java";
+import QAWebinar from "./pages/course_pages/QApage";
+import ReactWebinarLanding from "./pages/course_pages/React";
+import UIUXCourseLanding from "./pages/course_pages/UiUxPage";
+import DevOpsCourseLanding from "./pages/course_pages/DevOops";
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -51,10 +59,44 @@ const App = () => {
     <Router>
       <AuthProvider>
         <div className="min-h-screen bg-gray-50">
+          <Navbar />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/courses" element={<CoursesPage />} />
+            <Route
+              path="/courses/devops-mastery-bootcamp"
+              element={<DevOpsCourseLanding />}
+            />
+            <Route
+              path="/courses/flutter-development-mastery-course"
+              element={<FlutterCourseLanding />}
+            />
+            <Route
+              path="/courses/genai-using-python-mastery-course"
+              element={<GenAIWebinarLanding />}
+            />
+            <Route
+              path="/courses/java-programming-master-classes"
+              element={<JavaSpringBootWebinar />}
+            />
+            <Route
+              path="/courses/qa-testing-master-course"
+              element={<QAWebinar />}
+            />
+            <Route
+              path="/courses/react-js-master-course"
+              element={<ReactWebinarLanding />}
+            />
+            <Route
+              path="/courses/react-native-master-course"
+              element={<ReactNative />}
+            />
+            <Route
+              path="/courses/ui-ux-design-master-course"
+              element={<UIUXCourseLanding />}
+            />
+
             <Route path="/course/:slug" element={<CourseDetailsPage />} />
             <Route path="/register/:slug" element={<RegistrationPage />} />
             <Route
