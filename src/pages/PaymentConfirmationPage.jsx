@@ -41,8 +41,7 @@ const PaymentConfirmationPage = () => {
     setMessage("");
 
     try {
-      const enrollmentId =
-        localStorage.getItem("enrollmentId") || "689841578d7650ef37feb509"; // Use courseId if enrollmentId not found
+      const enrollmentId = localStorage.getItem("enrollmentId"); // Use courseId if enrollmentId not found
       const response = await axiosInstance.post(
         "/payments/create-confirmation-order",
         {

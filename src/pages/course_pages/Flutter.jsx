@@ -23,6 +23,9 @@ import {
   Database,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import AboutJprTechnosoft from "../../components/AboutJprTechnosoft";
+import ContactSection from "../../components/ContactSection";
+import Footer from "../../components/Footer";
 
 export default function FlutterCourseLanding() {
   const navigate = useNavigate();
@@ -629,6 +632,10 @@ export default function FlutterCourseLanding() {
           </p>
         </div>
       </section>
+
+      <AboutJprTechnosoft />
+      <ContactSection />
+      <Footer />
     </div>
   );
 }

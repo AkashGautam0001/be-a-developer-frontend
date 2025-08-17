@@ -14,8 +14,13 @@ import {
   Smartphone,
   IndianRupee,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import AboutJprTechnosoft from "../../components/AboutJprTechnosoft";
+import ContactSection from "../../components/ContactSection";
+import Footer from "../../components/Footer";
 
 const ReactNative = () => {
+  const navigate = useNavigate();
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -54,9 +59,7 @@ const ReactNative = () => {
   }, []);
 
   const handleEnrollClick = () => {
-    alert(
-      "🎉 Redirecting to registration form...\n\nIn a real implementation, this would redirect to your registration/payment form or trigger a conversion event for Meta ads tracking."
-    );
+    navigate("/course/react-native-master-course");
   };
 
   const features = [
@@ -315,6 +318,9 @@ const ReactNative = () => {
           }
         }
       `}</style>
+      <AboutJprTechnosoft />
+      <ContactSection />
+      <Footer />
     </div>
   );
 };

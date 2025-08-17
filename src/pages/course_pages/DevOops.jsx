@@ -37,6 +37,9 @@ import {
   Users2,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import AboutJprTechnosoft from "../../components/AboutJprTechnosoft";
+import ContactSection from "../../components/ContactSection";
+import Footer from "../../components/Footer";
 
 export default function DevOpsCourseLanding() {
   const [isVisible, setIsVisible] = useState({});
@@ -506,6 +509,9 @@ export default function DevOpsCourseLanding() {
           </div>
         </div>
       </section>
+      <AboutJprTechnosoft />
+      <ContactSection />
+      <Footer />
     </div>
   );
 }

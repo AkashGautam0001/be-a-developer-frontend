@@ -52,7 +52,7 @@ const RegistrationPage = () => {
         "/enrollments/create-enrollment",
         {
           ...formData,
-          courseId: slug,
+          slug: slug,
         }
       );
 

@@ -29,10 +29,10 @@ const CourseDetailsPage = () => {
   };
 
   const handleGetSubscription = () => {
-    // if (!user) {
-    //   navigate("/login");
-    //   return;
-    // }
+    if (user) {
+      navigate("/login");
+      return;
+    }
     navigate(`/register/${slug}`);
   };
 

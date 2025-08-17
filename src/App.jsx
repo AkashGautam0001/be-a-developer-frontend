@@ -23,6 +23,7 @@ import QAWebinar from "./pages/course_pages/QApage";
 import ReactWebinarLanding from "./pages/course_pages/React";
 import UIUXCourseLanding from "./pages/course_pages/UiUxPage";
 import DevOpsCourseLanding from "./pages/course_pages/DevOops";
+import UserDashboard from "./pages/UserDashboard";
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -77,7 +78,7 @@ const App = () => {
               element={<GenAIWebinarLanding />}
             />
             <Route
-              path="/courses/java-programming-master-classes"
+              path="/courses/java-spring-boot-master-course"
               element={<JavaSpringBootWebinar />}
             />
             <Route
@@ -107,7 +108,8 @@ const App = () => {
               path="/dashboard"
               element={
                 <ProtectedRoute>
-                  <Dashboard />
+                  {/* <Dashboard /> */}
+                  <UserDashboard />
                 </ProtectedRoute>
               }
             />

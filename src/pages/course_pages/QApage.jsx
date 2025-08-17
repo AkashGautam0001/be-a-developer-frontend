@@ -36,7 +36,17 @@ import {
   GraduationCap,
   Rocket,
   Search,
+  ChevronRight,
+  Sparkles,
+  Trophy,
+  Timer,
+  BookMarked,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import ContactSection from "../../components/ContactSection";
+import EnrollButton from "../../components/EnrollButton";
+import AboutJprTechnosoft from "../../components/AboutJprTechnosoft";
+import Footer from "../../components/Footer";
 
 const QAWebinar = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -45,7 +55,7 @@ const QAWebinar = () => {
     minutes: 0,
     seconds: 0,
   });
-
+  const navigate = useNavigate();
   useEffect(() => {
     const updateCountdown = () => {
       const targetDate = new Date();
@@ -75,633 +85,299 @@ const QAWebinar = () => {
     const interval = setInterval(updateCountdown, 1000);
     return () => clearInterval(interval);
   }, []);
+
   const enrollNow = () => {
-    alert(
-      "🎉 Redirecting to registration form...\n\nFor immediate enrollment, contact: 9540472951"
-    );
+    navigate("/course/qa-testing-master-course");
   };
 
-  const AnimatedBackground = () => (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-indigo-800 to-purple-900"></div>
-
-      {/* Floating geometric shapes */}
-      <div
-        className="absolute top-10 left-5 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-white/10 to-white/5 rounded-full animate-bounce opacity-70"
-        style={{ animationDelay: "0s", animationDuration: "6s" }}></div>
-      <div
-        className="absolute top-32 right-10 w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-cyan-400/20 to-blue-400/10 rounded-full animate-bounce opacity-60"
-        style={{ animationDelay: "2s", animationDuration: "8s" }}></div>
-      <div
-        className="absolute top-1/2 left-1/4 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-gradient-to-br from-green-400/20 to-teal-400/10 rounded-full animate-bounce opacity-50"
-        style={{ animationDelay: "4s", animationDuration: "7s" }}></div>
-      <div
-        className="absolute bottom-32 right-1/4 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 bg-gradient-to-br from-purple-400/15 to-indigo-400/5 rounded-full animate-bounce opacity-60"
-        style={{ animationDelay: "1s", animationDuration: "9s" }}></div>
-      <div
-        className="absolute bottom-20 left-10 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-orange-400/20 to-red-400/10 rounded-full animate-bounce opacity-70"
-        style={{ animationDelay: "3s", animationDuration: "5s" }}></div>
-
-      {/* Moving particles */}
-      <div className="absolute inset-0">
-        {[...Array(12)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 sm:w-2 sm:h-2 bg-white/30 rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${i * 0.5}s`,
-              animationDuration: `${3 + Math.random() * 3}s`,
-            }}></div>
-        ))}
-      </div>
-
-      {/* Animated gradient waves */}
-      <div className="absolute inset-0 opacity-20">
-        <div
-          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-y-6 animate-pulse"
-          style={{ animationDuration: "4s" }}></div>
-        <div
-          className="absolute inset-0 bg-gradient-to-l from-transparent via-white/5 to-transparent transform skew-y-3 animate-pulse"
-          style={{ animationDelay: "2s", animationDuration: "6s" }}></div>
-      </div>
-    </div>
-  );
-
   return (
-    <div className="min-h-screen overflow-x-hidden relative">
-      <AnimatedBackground />
+    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+      {/* Navigation */}
+      {/* <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-gray-800">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-lg flex items-center justify-center">
+                <TestTube className="w-6 h-6 text-white" />
+              </div>
+              <span className="text-xl font-bold">JPR Technosoft</span>
+            </div>
+            <button
+              onClick={enrollNow}
+              className="bg-gradient-to-r from-cyan-500 to-purple-600 px-6 py-2 rounded-full font-semibold text-sm hover:scale-105 transition-transform">
+              Join Webinar
+            </button>
+          </div>
+        </div>
+      </nav> */}
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center py-8 sm:py-12 md:py-16">
-        <div className="absolute inset-0 bg-black/30 z-10"></div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-20 w-full">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
-            {/* Hero Text */}
-            <div className="text-white order-2 lg:order-1 text-center lg:text-left">
-              <div className="inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wide mb-4 sm:mb-6">
-                <TestTube className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-                QA Excellence Program
-              </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold mb-4 sm:mb-6 leading-tight">
-                <span className="bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
-                  Master Modern QA Testing
-                </span>
-                <br />
-                <span className="bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent">
-                  & Career Excellence
-                </span>
-              </h1>
-              <p className="text-lg sm:text-xl lg:text-2xl italic mb-6 sm:mb-8 text-blue-100 font-medium">
-                "Quality is not an act, it's a habit - Elevate your QA career to
-                the next level"
-              </p>
-              <p className="text-base sm:text-lg lg:text-xl mb-8 sm:mb-10 text-blue-50 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                Join the most comprehensive QA training program designed for
-                modern software testing. Learn cutting-edge automation
-                techniques, advanced testing methodologies, and career
-                acceleration strategies from industry experts at JPR Technosoft.
-              </p>
+      <section className="relative min-h-screen flex items-center justify-center pt-20">
+        {/* Animated background grid */}
+        <div className="absolute inset-0 opacity-20">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `
+                linear-gradient(rgba(6, 182, 212, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(6, 182, 212, 0.1) 1px, transparent 1px)
+              `,
+              backgroundSize: "50px 50px",
+              animation: "float 20s infinite linear",
+            }}></div>
+        </div>
 
-              {/* Key Benefits Preview */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-8 max-w-2xl mx-auto lg:mx-0">
-                <div className="flex items-center bg-white/10 backdrop-blur-sm rounded-lg px-3 py-2 sm:px-4 sm:py-3">
-                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mr-2 sm:mr-3 flex-shrink-0" />
-                  <span className="text-sm sm:text-base text-white">
-                    Live Hands-on Training
-                  </span>
+        <div className="container mx-auto px-6 text-center relative z-10">
+          {/* Badge */}
+          <div className="inline-flex items-center bg-gray-800/50 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-700 mb-8">
+            <Sparkles className="w-4 h-4 text-cyan-400 mr-2" />
+            <span className="text-sm font-medium">Free Masterclass</span>
+            <div className="w-2 h-2 bg-red-500 rounded-full ml-3 animate-pulse"></div>
+            <span className="text-xs text-red-400 ml-1">LIVE</span>
+          </div>
+
+          {/* Main heading */}
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight">
+            <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+              Master QA Testing
+            </span>
+            <br />
+            <span className="text-white">in 2024</span>
+          </h1>
+
+          <p className="text-xl md:text-2xl text-gray-400 mb-8 max-w-2xl mx-auto">
+            Join 500+ professionals who transformed their careers with our
+            expert-led training program
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-12">
+            <button
+              onClick={enrollNow}
+              className="bg-gradient-to-r from-cyan-500 to-purple-600 px-8 py-4 rounded-2xl font-bold text-lg hover:scale-105 transition-all duration-300 shadow-lg shadow-purple-500/25">
+              <Play className="w-5 h-5 inline mr-2" />
+              Enroll Now
+            </button>
+          </div>
+
+          {/* Stats */}
+          <div className="grid grid-cols-3 gap-8 max-w-md mx-auto">
+            <div className="text-center">
+              <div className="text-2xl font-bold text-cyan-400">13+</div>
+              <div className="text-sm text-gray-500">Years Experience</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-purple-400">500+</div>
+              <div className="text-sm text-gray-500">Students Trained</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-pink-400">95%</div>
+              <div className="text-sm text-gray-500">Job Success</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Floating registration card */}
+        {/* <div className="fixed right-6 top-1/2 transform -translate-y-1/2 z-40 hidden xl:block">
+          <div className="bg-gray-900/90 backdrop-blur-xl p-6 rounded-3xl border border-gray-700 w-80 shadow-2xl">
+            <div className="bg-gradient-to-r from-red-500 to-orange-500 text-white p-4 rounded-2xl text-center mb-4">
+              <Timer className="w-6 h-6 mx-auto mb-2" />
+              <div className="text-sm font-semibold">
+                Registration Closes In:
+              </div>
+              <div className="flex justify-center space-x-4 mt-2">
+                <div>
+                  <div className="text-2xl font-bold">
+                    {timeLeft.hours.toString().padStart(2, "0")}
+                  </div>
+                  <div className="text-xs">HRS</div>
                 </div>
-                <div className="flex items-center bg-white/10 backdrop-blur-sm rounded-lg px-3 py-2 sm:px-4 sm:py-3">
-                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mr-2 sm:mr-3 flex-shrink-0" />
-                  <span className="text-sm sm:text-base text-white">
-                    Industry Certification
-                  </span>
+                <div>
+                  <div className="text-2xl font-bold">
+                    {timeLeft.minutes.toString().padStart(2, "0")}
+                  </div>
+                  <div className="text-xs">MIN</div>
                 </div>
-                <div className="flex items-center bg-white/10 backdrop-blur-sm rounded-lg px-3 py-2 sm:px-4 sm:py-3">
-                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mr-2 sm:mr-3 flex-shrink-0" />
-                  <span className="text-sm sm:text-base text-white">
-                    Career Guidance
-                  </span>
-                </div>
-                <div className="flex items-center bg-white/10 backdrop-blur-sm rounded-lg px-3 py-2 sm:px-4 sm:py-3">
-                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mr-2 sm:mr-3 flex-shrink-0" />
-                  <span className="text-sm sm:text-base text-white">
-                    Job Placement Support
-                  </span>
+                <div>
+                  <div className="text-2xl font-bold">
+                    {timeLeft.seconds.toString().padStart(2, "0")}
+                  </div>
+                  <div className="text-xs">SEC</div>
                 </div>
               </div>
             </div>
 
-            {/* Registration Card */}
-            <div className="bg-white/95 backdrop-blur-lg p-6 sm:p-8 lg:p-10 rounded-3xl shadow-2xl transform hover:scale-105 transition-all duration-300 order-1 lg:order-2 w-full max-w-md mx-auto lg:max-w-none">
-              <div className="inline-block bg-gradient-to-r from-orange-500 to-red-500 text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wide mb-4 sm:mb-6">
-                <Target className="w-3 h-3 sm:w-4 sm:h-4 inline mr-1 sm:mr-2" />
-                Premium QA Webinar
+            <h3 className="text-lg font-bold mb-4">QA Career Mastery</h3>
+            <div className="space-y-3 mb-6">
+              <div className="flex items-center text-sm">
+                <Calendar className="w-4 h-4 text-cyan-400 mr-3" />
+                <span>Nov 25, 2024</span>
               </div>
+              <div className="flex items-center text-sm">
+                <Clock className="w-4 h-4 text-purple-400 mr-3" />
+                <span>3 Hours Duration</span>
+              </div>
+              <div className="flex items-center text-sm">
+                <Users className="w-4 h-4 text-pink-400 mr-3" />
+                <span>Limited to 50 Seats</span>
+              </div>
+            </div>
 
-              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800 mb-3 sm:mb-4">
-                QA Career Mastery Program
-              </h2>
-              <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">
-                Transform your testing skills with advanced QA methodologies and
-                automation frameworks
+            <button
+              onClick={enrollNow}
+              className="w-full bg-gradient-to-r from-cyan-500 to-purple-600 py-3 rounded-xl font-bold hover:scale-105 transition-transform">
+              Secure My Spot
+            </button>
+          </div>
+        </div> */}
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 relative">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-black mb-4">
+              <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
+                Why Choose Us?
+              </span>
+            </h2>
+            <p className="text-xl text-gray-400">
+              Everything you need to excel in QA testing
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="group bg-gray-900/50 backdrop-blur-sm p-8 rounded-3xl border border-gray-800 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-2">
+              <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Brain className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Expert Instructors</h3>
+              <p className="text-gray-400">
+                Learn from industry veterans with 15+ years of experience
               </p>
+            </div>
 
-              {/* Webinar Details */}
-              <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-4 sm:p-6 rounded-2xl mb-4 sm:mb-6 border border-blue-100">
-                <div className="grid grid-cols-2 gap-4 text-center">
-                  <div className="flex items-center justify-center">
-                    <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mr-2" />
-                    <div>
-                      <div className="text-xs sm:text-sm font-medium text-gray-600">
-                        Date
-                      </div>
-                      <div className="text-sm sm:text-base font-bold text-gray-800">
-                        Nov 25, 2024
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-center">
-                    <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mr-2" />
-                    <div>
-                      <div className="text-xs sm:text-sm font-medium text-gray-600">
-                        Duration
-                      </div>
-                      <div className="text-sm sm:text-base font-bold text-gray-800">
-                        3 Hours
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            <div className="group bg-gray-900/50 backdrop-blur-sm p-8 rounded-3xl border border-gray-800 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-2">
+              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Rocket className="w-8 h-8 text-white" />
               </div>
+              <h3 className="text-xl font-bold mb-3">Career Growth</h3>
+              <p className="text-gray-400">
+                95% of our graduates land jobs within 3 months
+              </p>
+            </div>
 
-              {/* Countdown Timer */}
-              <div className="bg-gradient-to-r from-red-500 to-red-600 text-white p-4 sm:p-6 rounded-2xl text-center mb-4 sm:mb-6 shadow-lg">
-                <div className="flex items-center justify-center mb-3 sm:mb-4">
-                  <Clock className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                  <h3 className="text-xs sm:text-sm font-semibold uppercase tracking-wide">
-                    Registration Closes In:
-                  </h3>
+            <div className="group bg-gray-900/50 backdrop-blur-sm p-8 rounded-3xl border border-gray-800 hover:border-green-500/50 transition-all duration-300 hover:-translate-y-2">
+              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Award className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Certification</h3>
+              <p className="text-gray-400">
+                Industry-recognized certificates to boost your profile
+              </p>
+            </div>
+
+            <div className="group bg-gray-900/50 backdrop-blur-sm p-8 rounded-3xl border border-gray-800 hover:border-orange-500/50 transition-all duration-300 hover:-translate-y-2">
+              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Users className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Community</h3>
+              <p className="text-gray-400">
+                Join a thriving network of QA professionals
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Curriculum Section */}
+      <section className="py-20 bg-gray-900/30">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-black mb-4">
+              <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+                Master These Skills
+              </span>
+            </h2>
+            <p className="text-xl text-gray-400">
+              Comprehensive training across all QA domains
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-8">
+            <div className="space-y-6">
+              <div className="bg-black/30 backdrop-blur-sm p-6 rounded-2xl border border-gray-800 hover:border-cyan-500/50 transition-colors">
+                <div className="flex items-center space-x-4 mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center">
+                    <TestTube className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold">Manual Testing</h3>
                 </div>
-                <div className="flex justify-around">
-                  <div className="text-center">
-                    <div className="text-2xl sm:text-3xl font-bold">
-                      {timeLeft.hours.toString().padStart(2, "0")}
-                    </div>
-                    <div className="text-xs uppercase tracking-wide mt-1">
-                      Hours
-                    </div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl sm:text-3xl font-bold">
-                      {timeLeft.minutes.toString().padStart(2, "0")}
-                    </div>
-                    <div className="text-xs uppercase tracking-wide mt-1">
-                      Minutes
-                    </div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl sm:text-3xl font-bold">
-                      {timeLeft.seconds.toString().padStart(2, "0")}
-                    </div>
-                    <div className="text-xs uppercase tracking-wide mt-1">
-                      Seconds
-                    </div>
-                  </div>
-                </div>
-                <p className="text-xs sm:text-sm mt-3">
-                  Limited seats - Only 50 professionals!
+                <p className="text-gray-400">
+                  Master test planning, execution, and defect management
                 </p>
               </div>
 
-              <button
-                onClick={enrollNow}
-                className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-3 sm:py-4 px-6 sm:px-8 rounded-full font-bold text-base sm:text-lg uppercase tracking-wide shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 relative overflow-hidden group mb-4">
-                <div className="flex items-center justify-center">
-                  <Zap className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                  Enroll Now - Free
+              <div className="bg-black/30 backdrop-blur-sm p-6 rounded-2xl border border-gray-800 hover:border-purple-500/50 transition-colors">
+                <div className="flex items-center space-x-4 mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
+                    <Code className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold">Automation Testing</h3>
                 </div>
-                <div className="absolute inset-0 bg-white/20 rounded-full scale-0 group-hover:scale-100 transition-transform duration-500"></div>
-              </button>
-
-              <div className="text-center text-xs sm:text-sm text-gray-600 space-y-2">
-                <div className="flex items-center justify-center space-x-4">
-                  <span className="flex items-center space-x-1">
-                    <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-green-500" />
-                    <span>Instant Access</span>
-                  </span>
-                  <span className="flex items-center space-x-1">
-                    <Award className="w-3 h-3 sm:w-4 sm:h-4 text-green-500" />
-                    <span>Certificate</span>
-                  </span>
-                </div>
-                <div className="flex items-center justify-center space-x-4">
-                  <span className="flex items-center space-x-1">
-                    <Users className="w-3 h-3 sm:w-4 sm:h-4 text-green-500" />
-                    <span>Live QA Session</span>
-                  </span>
-                  <span className="flex items-center space-x-1">
-                    <Download className="w-3 h-3 sm:w-4 sm:h-4 text-green-500" />
-                    <span>Resources</span>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Company Introduction */}
-      <section className="bg-white py-12 sm:py-16 lg:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-800 mb-4 sm:mb-6">
-              About JPR Technosoft
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Leading the way in software quality assurance training and
-              consulting for over a decade
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center mb-12 lg:mb-16">
-            <div className="space-y-6 sm:space-y-8">
-              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 sm:p-8 rounded-3xl border border-blue-100">
-                <Building className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600 mb-4" />
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-3 sm:mb-4">
-                  Our Mission
-                </h3>
-                <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-                  To empower QA professionals with cutting-edge skills,
-                  methodologies, and tools that enable them to excel in their
-                  careers and contribute to building higher quality software
-                  products.
+                <p className="text-gray-400">
+                  Selenium, TestNG, and modern automation frameworks
                 </p>
               </div>
 
-              <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-6 sm:p-8 rounded-3xl border border-purple-100">
-                <Target className="w-8 h-8 sm:w-10 sm:h-10 text-purple-600 mb-4" />
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-3 sm:mb-4">
-                  Our Vision
-                </h3>
-                <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-                  To be the premier destination for QA education and career
-                  development, creating a community of world-class quality
-                  assurance professionals who drive innovation in software
-                  testing.
+              <div className="bg-black/30 backdrop-blur-sm p-6 rounded-2xl border border-gray-800 hover:border-green-500/50 transition-colors">
+                <div className="flex items-center space-x-4 mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
+                    <TrendingUp className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold">Performance Testing</h3>
+                </div>
+                <p className="text-gray-400">
+                  Load testing with JMeter and performance optimization
                 </p>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 sm:gap-6">
-              <div className="text-center bg-gradient-to-br from-blue-500 to-blue-600 text-white p-6 sm:p-8 rounded-3xl shadow-lg">
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-2 sm:mb-3">
-                  13+
-                </div>
-                <div className="text-sm sm:text-base lg:text-lg font-semibold">
-                  Years of Excellence
-                </div>
-              </div>
-              <div className="text-center bg-gradient-to-br from-green-500 to-green-600 text-white p-6 sm:p-8 rounded-3xl shadow-lg">
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-2 sm:mb-3">
-                  500+
-                </div>
-                <div className="text-sm sm:text-base lg:text-lg font-semibold">
-                  QA Professionals Trained
-                </div>
-              </div>
-              <div className="text-center bg-gradient-to-br from-purple-500 to-purple-600 text-white p-6 sm:p-8 rounded-3xl shadow-lg">
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-2 sm:mb-3">
-                  95%
-                </div>
-                <div className="text-sm sm:text-base lg:text-lg font-semibold">
-                  Job Placement Rate
-                </div>
-              </div>
-              <div className="text-center bg-gradient-to-br from-orange-500 to-orange-600 text-white p-6 sm:p-8 rounded-3xl shadow-lg">
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-2 sm:mb-3">
-                  50+
-                </div>
-                <div className="text-sm sm:text-base lg:text-lg font-semibold">
-                  Corporate Clients
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* What You'll Learn Section */}
-      <section className="bg-gradient-to-br from-gray-50 to-blue-50 py-12 sm:py-16 lg:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-800 mb-4 sm:mb-6">
-              Comprehensive QA Training Curriculum
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Master every aspect of modern software testing with our
-              industry-leading curriculum designed by experts with decades of
-              experience
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-            {/* Manual Testing Fundamentals */}
-            <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-blue-500 group">
-              <TestTube className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600 mb-4 sm:mb-6 group-hover:scale-110 transition-transform" />
-              <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-800">
-                Manual Testing Mastery
-              </h3>
-              <p className="text-sm sm:text-base text-gray-600 mb-4">
-                Complete foundation in manual testing methodologies, test case
-                design, and execution strategies.
-              </p>
-              <ul className="text-xs sm:text-sm text-gray-500 space-y-1">
-                <li>• Test Planning & Strategy</li>
-                <li>• Test Case Design Techniques</li>
-                <li>• Defect Management</li>
-                <li>• Risk-Based Testing</li>
-              </ul>
-            </div>
-
-            {/* Automation Testing */}
-            <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-green-500 group">
-              <Code className="w-10 h-10 sm:w-12 sm:h-12 text-green-600 mb-4 sm:mb-6 group-hover:scale-110 transition-transform" />
-              <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-800">
-                Automation Excellence
-              </h3>
-              <p className="text-sm sm:text-base text-gray-600 mb-4">
-                Advanced automation frameworks using Selenium, TestNG, and
-                modern testing tools.
-              </p>
-              <ul className="text-xs sm:text-sm text-gray-500 space-y-1">
-                <li>• Selenium WebDriver</li>
-                <li>• TestNG & JUnit</li>
-                <li>• Page Object Model</li>
-                <li>• CI/CD Integration</li>
-              </ul>
-            </div>
-
-            {/* Performance Testing */}
-            <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-purple-500 group">
-              <TrendingUp className="w-10 h-10 sm:w-12 sm:h-12 text-purple-600 mb-4 sm:mb-6 group-hover:scale-110 transition-transform" />
-              <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-800">
-                Performance Testing
-              </h3>
-              <p className="text-sm sm:text-base text-gray-600 mb-4">
-                Load, stress, and performance testing using JMeter and modern
-                performance tools.
-              </p>
-              <ul className="text-xs sm:text-sm text-gray-500 space-y-1">
-                <li>• JMeter Proficiency</li>
-                <li>• Load Testing Strategy</li>
-                <li>• Performance Monitoring</li>
-                <li>• Bottleneck Analysis</li>
-              </ul>
-            </div>
-
-            {/* API Testing */}
-            <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-orange-500 group">
-              <Database className="w-10 h-10 sm:w-12 sm:h-12 text-orange-600 mb-4 sm:mb-6 group-hover:scale-110 transition-transform" />
-              <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-800">
-                API Testing
-              </h3>
-              <p className="text-sm sm:text-base text-gray-600 mb-4">
-                Comprehensive API testing with REST, SOAP, and GraphQL using
-                Postman and RestAssured.
-              </p>
-              <ul className="text-xs sm:text-sm text-gray-500 space-y-1">
-                <li>• REST API Testing</li>
-                <li>• Postman Mastery</li>
-                <li>• RestAssured Framework</li>
-                <li>• API Security Testing</li>
-              </ul>
-            </div>
-
-            {/* Mobile Testing */}
-            <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-red-500 group">
-              <Monitor className="w-10 h-10 sm:w-12 sm:h-12 text-red-600 mb-4 sm:mb-6 group-hover:scale-110 transition-transform" />
-              <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-800">
-                Mobile Testing
-              </h3>
-              <p className="text-sm sm:text-base text-gray-600 mb-4">
-                iOS and Android testing strategies, tools, and best practices
-                for mobile applications.
-              </p>
-              <ul className="text-xs sm:text-sm text-gray-500 space-y-1">
-                <li>• Appium Framework</li>
-                <li>• Device Testing</li>
-                <li>• Mobile Automation</li>
-                <li>• App Store Guidelines</li>
-              </ul>
-            </div>
-
-            {/* Security Testing */}
-            <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-indigo-500 group">
-              <Shield className="w-10 h-10 sm:w-12 sm:h-12 text-indigo-600 mb-4 sm:mb-6 group-hover:scale-110 transition-transform" />
-              <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-800">
-                Security Testing
-              </h3>
-              <p className="text-sm sm:text-base text-gray-600 mb-4">
-                Web application security testing, vulnerability assessment, and
-                security best practices.
-              </p>
-              <ul className="text-xs sm:text-sm text-gray-500 space-y-1">
-                <li>• OWASP Top 10</li>
-                <li>• Vulnerability Scanning</li>
-                <li>• Penetration Testing</li>
-                <li>• Security Automation</li>
-              </ul>
-            </div>
-
-            {/* Test Management */}
-            <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-cyan-500 group">
-              <Settings className="w-10 h-10 sm:w-12 sm:h-12 text-cyan-600 mb-4 sm:mb-6 group-hover:scale-110 transition-transform" />
-              <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-800">
-                Test Management
-              </h3>
-              <p className="text-sm sm:text-base text-gray-600 mb-4">
-                Advanced test management using JIRA, TestRail, and modern
-                project management methodologies.
-              </p>
-              <ul className="text-xs sm:text-sm text-gray-500 space-y-1">
-                <li>• Test Planning & Estimation</li>
-                <li>• JIRA Integration</li>
-                <li>• TestRail Management</li>
-                <li>• Agile/Scrum Processes</li>
-              </ul>
-            </div>
-
-            {/* Career Development */}
-            <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-2 border-transparent hover:border-pink-500 group">
-              <Rocket className="w-10 h-10 sm:w-12 sm:h-12 text-pink-600 mb-4 sm:mb-6 group-hover:scale-110 transition-transform" />
-              <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-800">
-                Career Advancement
-              </h3>
-              <p className="text-sm sm:text-base text-gray-600 mb-4">
-                Professional development, interview preparation, and career
-                growth strategies for QA professionals.
-              </p>
-              <ul className="text-xs sm:text-sm text-gray-500 space-y-1">
-                <li>• Resume Building</li>
-                <li>• Interview Preparation</li>
-                <li>• Industry Networking</li>
-                <li>• Salary Negotiation</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Instructor Section */}
-      <section className="bg-white py-12 sm:py-16 lg:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-800 mb-4 sm:mb-6">
-              Learn from Industry Experts
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Our instructors are seasoned professionals with decades of
-              real-world QA experience
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 mb-12 lg:mb-16">
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 sm:p-8 rounded-3xl text-center shadow-lg border border-blue-100">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full mx-auto mb-4 sm:mb-6 flex items-center justify-center">
-                <GraduationCap className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2 sm:mb-3">
-                15+ Years Experience
-              </h3>
-              <p className="text-sm sm:text-base text-gray-600">
-                Expert instructors with extensive industry experience across
-                various domains and technologies.
-              </p>
-            </div>
-
-            <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 sm:p-8 rounded-3xl text-center shadow-lg border border-green-100">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full mx-auto mb-4 sm:mb-6 flex items-center justify-center">
-                <Award className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2 sm:mb-3">
-                Certified Trainers
-              </h3>
-              <p className="text-sm sm:text-base text-gray-600">
-                Industry-certified professionals with proven track records in
-                training and mentoring QA teams.
-              </p>
-            </div>
-
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 sm:p-8 rounded-3xl text-center shadow-lg border border-purple-100">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full mx-auto mb-4 sm:mb-6 flex items-center justify-center">
-                <Users className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2 sm:mb-3">
-                Personalized Mentorship
-              </h3>
-              <p className="text-sm sm:text-base text-gray-600">
-                One-on-one guidance and career counseling to help you achieve
-                your professional goals.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Webinar Agenda */}
-      <section className="bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 text-white py-12 sm:py-16 lg:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6">
-              Webinar Agenda
-            </h2>
-            <p className="text-lg sm:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
-              A comprehensive 3-hour session covering the latest trends and
-              opportunities in QA testing
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-            <div className="space-y-6 sm:space-y-8">
-              <div className="bg-white/10 backdrop-blur-sm p-6 sm:p-8 rounded-3xl border border-white/20">
-                <div className="flex items-start space-x-4 sm:space-x-6">
-                  <div className="bg-gradient-to-br from-yellow-400 to-orange-500 w-12 h-12 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <Play className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+            <div className="space-y-6">
+              <div className="bg-black/30 backdrop-blur-sm p-6 rounded-2xl border border-gray-800 hover:border-orange-500/50 transition-colors">
+                <div className="flex items-center space-x-4 mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-600 rounded-xl flex items-center justify-center">
+                    <Database className="w-6 h-6 text-white" />
                   </div>
-                  <div>
-                    <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">
-                      Session 1: QA Industry Overview (45 min)
-                    </h3>
-                    <ul className="text-sm sm:text-base text-blue-100 space-y-1 sm:space-y-2">
-                      <li>• Current market trends in software testing</li>
-                      <li>• Career opportunities and growth paths</li>
-                      <li>• Salary benchmarks and expectations</li>
-                      <li>• Skills gap analysis and demand</li>
-                    </ul>
-                  </div>
+                  <h3 className="text-xl font-bold">API Testing</h3>
                 </div>
+                <p className="text-gray-400">
+                  REST, SOAP, GraphQL testing with Postman & RestAssured
+                </p>
               </div>
 
-              <div className="bg-white/10 backdrop-blur-sm p-6 sm:p-8 rounded-3xl border border-white/20">
-                <div className="flex items-start space-x-4 sm:space-x-6">
-                  <div className="bg-gradient-to-br from-blue-400 to-cyan-500 w-12 h-12 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <Brain className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+              <div className="bg-black/30 backdrop-blur-sm p-6 rounded-2xl border border-gray-800 hover:border-indigo-500/50 transition-colors">
+                <div className="flex items-center space-x-4 mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center">
+                    <Shield className="w-6 h-6 text-white" />
                   </div>
-                  <div>
-                    <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">
-                      Session 2: Modern Testing Techniques (60 min)
-                    </h3>
-                    <ul className="text-sm sm:text-base text-blue-100 space-y-1 sm:space-y-2">
-                      <li>• AI-powered testing approaches</li>
-                      <li>• Shift-left and shift-right testing</li>
-                      <li>• DevOps integration strategies</li>
-                      <li>• Cloud-based testing solutions</li>
-                    </ul>
-                  </div>
+                  <h3 className="text-xl font-bold">Security Testing</h3>
                 </div>
-              </div>
-            </div>
-
-            <div className="space-y-6 sm:space-y-8">
-              <div className="bg-white/10 backdrop-blur-sm p-6 sm:p-8 rounded-3xl border border-white/20">
-                <div className="flex items-start space-x-4 sm:space-x-6">
-                  <div className="bg-gradient-to-br from-green-400 to-emerald-500 w-12 h-12 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <Lightbulb className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">
-                      Session 3: Career Mastery Strategies (60 min)
-                    </h3>
-                    <ul className="text-sm sm:text-base text-blue-100 space-y-1 sm:space-y-2">
-                      <li>• Building a standout QA portfolio</li>
-                      <li>• Interview preparation and techniques</li>
-                      <li>• Networking and professional branding</li>
-                      <li>• Freelancing and consulting opportunities</li>
-                    </ul>
-                  </div>
-                </div>
+                <p className="text-gray-400">
+                  OWASP guidelines and vulnerability assessment
+                </p>
               </div>
 
-              <div className="bg-white/10 backdrop-blur-sm p-6 sm:p-8 rounded-3xl border border-white/20">
-                <div className="flex items-start space-x-4 sm:space-x-6">
-                  <div className="bg-gradient-to-br from-purple-400 to-pink-500 w-12 h-12 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <Users className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+              <div className="bg-black/30 backdrop-blur-sm p-6 rounded-2xl border border-gray-800 hover:border-pink-500/50 transition-colors">
+                <div className="flex items-center space-x-4 mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-red-600 rounded-xl flex items-center justify-center">
+                    <Monitor className="w-6 h-6 text-white" />
                   </div>
-                  <div>
-                    <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">
-                      Session 4: Live Q&A & Networking (15 min)
-                    </h3>
-                    <ul className="text-sm sm:text-base text-blue-100 space-y-1 sm:space-y-2">
-                      <li>• Interactive Q&A with experts</li>
-                      <li>• Career guidance and advice</li>
-                      <li>• Networking opportunities</li>
-                      <li>• Resource sharing and takeaways</li>
-                    </ul>
-                  </div>
+                  <h3 className="text-xl font-bold">Mobile Testing</h3>
                 </div>
+                <p className="text-gray-400">
+                  iOS & Android testing with Appium automation
+                </p>
               </div>
             </div>
           </div>
@@ -709,295 +385,211 @@ const QAWebinar = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="bg-gray-50 py-12 sm:py-16 lg:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-800 mb-4 sm:mb-6">
-              Success Stories
+      <section className="py-20">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-black mb-4">
+              <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+                Success Stories
+              </span>
             </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Hear from our alumni who have transformed their careers with our
-              QA training programs
+            <p className="text-xl text-gray-400">
+              Real results from real students
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
-            <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-gray-100">
-              <div className="flex items-center mb-4 sm:mb-6">
-                <div className="flex text-yellow-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-4 h-4 sm:w-5 sm:h-5 fill-current"
-                    />
-                  ))}
-                </div>
-              </div>
-              <p className="text-sm sm:text-base text-gray-700 mb-4 sm:mb-6 leading-relaxed italic">
-                "The comprehensive curriculum and hands-on approach at JPR
-                Technosoft completely transformed my testing skills. Within 3
-                months of completion, I landed a senior QA role with a 40%
-                salary increase!"
-              </p>
-              <div className="flex items-center">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-3 sm:mr-4">
-                  <span className="text-white font-bold text-sm sm:text-base">
-                    PK
-                  </span>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-gray-900/50 backdrop-blur-sm p-8 rounded-3xl border border-gray-800">
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center mr-4">
+                  <span className="text-white font-bold">PK</span>
                 </div>
                 <div>
-                  <div className="font-semibold text-gray-800 text-sm sm:text-base">
-                    Priya Kumari
-                  </div>
-                  <div className="text-xs sm:text-sm text-gray-600">
-                    Senior QA Engineer at TechCorp
+                  <div className="font-bold">Priya Kumari</div>
+                  <div className="text-sm text-gray-400">
+                    Senior QA Engineer
                   </div>
                 </div>
               </div>
+              <div className="flex items-center space-x-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className="w-4 h-4 text-yellow-400 fill-current"
+                  />
+                ))}
+              </div>
+              <p className="text-gray-300 italic">
+                "Landed a senior role with 40% salary increase within 3 months.
+                The hands-on training was incredible!"
+              </p>
             </div>
 
-            <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-gray-100">
-              <div className="flex items-center mb-4 sm:mb-6">
-                <div className="flex text-yellow-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-4 h-4 sm:w-5 sm:h-5 fill-current"
-                    />
-                  ))}
-                </div>
-              </div>
-              <p className="text-sm sm:text-base text-gray-700 mb-4 sm:mb-6 leading-relaxed italic">
-                "The automation testing modules were incredibly detailed and
-                practical. The instructors' industry experience really showed.
-                I'm now leading automation initiatives at my company!"
-              </p>
-              <div className="flex items-center">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center mr-3 sm:mr-4">
-                  <span className="text-white font-bold text-sm sm:text-base">
-                    RS
-                  </span>
+            <div className="bg-gray-900/50 backdrop-blur-sm p-8 rounded-3xl border border-gray-800">
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center mr-4">
+                  <span className="text-white font-bold">RS</span>
                 </div>
                 <div>
-                  <div className="font-semibold text-gray-800 text-sm sm:text-base">
-                    Rajesh Singh
-                  </div>
-                  <div className="text-xs sm:text-sm text-gray-600">
-                    QA Automation Lead at InnovateTech
+                  <div className="font-bold">Rajesh Singh</div>
+                  <div className="text-sm text-gray-400">
+                    QA Automation Lead
                   </div>
                 </div>
               </div>
+              <div className="flex items-center space-x-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className="w-4 h-4 text-yellow-400 fill-current"
+                  />
+                ))}
+              </div>
+              <p className="text-gray-300 italic">
+                "Now leading automation initiatives at my company. The
+                instructors' expertise really shows!"
+              </p>
             </div>
 
-            <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-gray-100 md:col-span-2 lg:col-span-1">
-              <div className="flex items-center mb-4 sm:mb-6">
-                <div className="flex text-yellow-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-4 h-4 sm:w-5 sm:h-5 fill-current"
-                    />
-                  ))}
-                </div>
-              </div>
-              <p className="text-sm sm:text-base text-gray-700 mb-4 sm:mb-6 leading-relaxed italic">
-                "From manual testing to performance testing expert - this
-                program covered everything! The career guidance helped me
-                transition into a leadership role. Highly recommended!"
-              </p>
-              <div className="flex items-center">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center mr-3 sm:mr-4">
-                  <span className="text-white font-bold text-sm sm:text-base">
-                    AM
-                  </span>
+            <div className="bg-gray-900/50 backdrop-blur-sm p-8 rounded-3xl border border-gray-800">
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center mr-4">
+                  <span className="text-white font-bold">AM</span>
                 </div>
                 <div>
-                  <div className="font-semibold text-gray-800 text-sm sm:text-base">
-                    Anjali Mehta
-                  </div>
-                  <div className="text-xs sm:text-sm text-gray-600">
-                    QA Manager at GlobalSoft
-                  </div>
+                  <div className="font-bold">Anjali Mehta</div>
+                  <div className="text-sm text-gray-400">QA Manager</div>
                 </div>
               </div>
+              <div className="flex items-center space-x-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className="w-4 h-4 text-yellow-400 fill-current"
+                  />
+                ))}
+              </div>
+              <p className="text-gray-300 italic">
+                "From manual testing to leadership role. The career guidance was
+                invaluable!"
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact & Registration */}
-      <section className="bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 text-white py-12 sm:py-16 lg:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6">
-              Ready to Transform Your QA Career?
-            </h2>
-            <p className="text-lg sm:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed mb-6 sm:mb-8">
-              Join thousands of professionals who have accelerated their careers
-              with our comprehensive QA training programs
-            </p>
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-cyan-900/50 to-purple-900/50">
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-5xl font-black mb-6">
+            <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
+              Ready to Transform Your Career?
+            </span>
+          </h2>
+          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            Join the next batch of QA professionals who will dominate the
+            testing industry
+          </p>
 
-            <button
-              onClick={enrollNow}
-              className="inline-flex items-center bg-gradient-to-r from-green-500 to-green-600 text-white py-4 sm:py-5 px-8 sm:px-12 rounded-full font-bold text-lg sm:text-xl uppercase tracking-wide shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 mb-8 sm:mb-12">
-              <Zap className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" />
-              Register for Free Webinar
-              <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 ml-2 sm:ml-3" />
-            </button>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16">
-            {/* Contact Information */}
-            <div className="space-y-6 sm:space-y-8">
-              <div>
-                <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">
-                  Get in Touch
-                </h3>
-                <div className="space-y-4 sm:space-y-6">
-                  <div className="flex items-center space-x-3 sm:space-x-4">
-                    <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-green-400 flex-shrink-0" />
-                    <div>
-                      <div className="font-semibold text-sm sm:text-base">
-                        Call Us
-                      </div>
-                      <div className="text-blue-100 text-sm sm:text-base">
-                        +91 9540472951
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center space-x-3 sm:space-x-4">
-                    <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400 flex-shrink-0" />
-                    <div>
-                      <div className="font-semibold text-sm sm:text-base">
-                        Email Us
-                      </div>
-                      <div className="text-blue-100 text-sm sm:text-base">
-                        info@jprtechnosoft.com
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center space-x-3 sm:space-x-4">
-                    <Globe className="w-5 h-5 sm:w-6 sm:h-6 text-purple-400 flex-shrink-0" />
-                    <div>
-                      <div className="font-semibold text-sm sm:text-base">
-                        Visit Website
-                      </div>
-                      <div className="text-blue-100 text-sm sm:text-base">
-                        www.jprtechnosoft.com
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start space-x-3 sm:space-x-4">
-                    <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-red-400 flex-shrink-0 mt-1" />
-                    <div>
-                      <div className="font-semibold text-sm sm:text-base">
-                        Office Location
-                      </div>
-                      <div className="text-blue-100 text-sm sm:text-base">
-                        Sector 63, Noida
-                        <br />
-                        Uttar Pradesh, India
-                      </div>
-                    </div>
-                  </div>
+          <div className="bg-black/50 backdrop-blur-sm p-8 rounded-3xl border border-gray-800 max-w-md mx-auto mb-8">
+            <div className="text-red-400 font-bold mb-4">
+              Registration Closes In:
+            </div>
+            <div className="flex justify-center space-x-6 mb-4">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-white">
+                  {timeLeft.hours.toString().padStart(2, "0")}
                 </div>
+                <div className="text-sm text-gray-400">Hours</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-white">
+                  {timeLeft.minutes.toString().padStart(2, "0")}
+                </div>
+                <div className="text-sm text-gray-400">Minutes</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-white">
+                  {timeLeft.seconds.toString().padStart(2, "0")}
+                </div>
+                <div className="text-sm text-gray-400">Seconds</div>
               </div>
             </div>
+            <p className="text-sm text-gray-400">Only 50 seats available!</p>
+          </div>
 
-            {/* Quick Benefits */}
-            <div className="bg-white/10 backdrop-blur-sm p-6 sm:p-8 rounded-3xl border border-white/20">
-              <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">
-                What You Get
-              </h3>
-              <div className="space-y-3 sm:space-y-4">
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 flex-shrink-0" />
-                  <span className="text-sm sm:text-base">
-                    Comprehensive 6-month training program
-                  </span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 flex-shrink-0" />
-                  <span className="text-sm sm:text-base">
-                    Hands-on projects and real-world scenarios
-                  </span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 flex-shrink-0" />
-                  <span className="text-sm sm:text-base">
-                    Industry-recognized certification
-                  </span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 flex-shrink-0" />
-                  <span className="text-sm sm:text-base">
-                    100% job placement assistance
-                  </span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 flex-shrink-0" />
-                  <span className="text-sm sm:text-base">
-                    Lifetime access to course materials
-                  </span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 flex-shrink-0" />
-                  <span className="text-sm sm:text-base">
-                    Personalized career mentoring
-                  </span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 flex-shrink-0" />
-                  <span className="text-sm sm:text-base">
-                    Alumni network and community support
-                  </span>
-                </div>
-              </div>
+          <button
+            onClick={enrollNow}
+            className="bg-gradient-to-r from-cyan-500 to-purple-600 px-12 py-6 rounded-2xl font-bold text-xl hover:scale-105 transition-all duration-300 shadow-2xl shadow-purple-500/25 mb-8">
+            <Zap className="w-6 h-6 inline mr-3" />
+            Join Webinar Now
+          </button>
 
-              <div className="mt-6 sm:mt-8 p-4 sm:p-6 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 rounded-2xl border border-yellow-400/30">
-                <div className="flex items-center space-x-2 sm:space-x-3 mb-2 sm:mb-3">
-                  <Award className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-400" />
-                  <span className="font-bold text-sm sm:text-base">
-                    Special Offer
-                  </span>
-                </div>
-                <p className="text-xs sm:text-sm text-blue-100">
-                  Register now and get <strong>20% early bird discount</strong>{" "}
-                  on our full QA certification program!
-                </p>
-              </div>
+          <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8 text-sm text-gray-400">
+            <div className="flex items-center">
+              <CheckCircle className="w-4 h-4 text-green-400 mr-2" />
+              <span>100% Free Registration</span>
+            </div>
+            <div className="flex items-center">
+              <Award className="w-4 h-4 text-yellow-400 mr-2" />
+              <span>Certificate Included</span>
+            </div>
+            <div className="flex items-center">
+              <Download className="w-4 h-4 text-cyan-400 mr-2" />
+              <span>Resources & Materials</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8 sm:py-12">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-          <div className="text-center">
-            <div className="mb-4 sm:mb-6">
-              <h3 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3">
-                JPR Technosoft
-              </h3>
-              <p className="text-sm sm:text-base text-gray-400">
-                Empowering QA Professionals Since 2010
-              </p>
+      <ContactSection />
+      <AboutJprTechnosoft />
+      <Footer />
+      <footer className="bg-gray-900 py-12 border-t border-gray-800">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="flex items-center space-x-3 mb-4 md:mb-0">
+              <div className="w-10 h-10 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-lg flex items-center justify-center">
+                <TestTube className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <div className="text-xl font-bold">JPR Technosoft</div>
+                <div className="text-sm text-gray-400">
+                  Empowering QA Excellence
+                </div>
+              </div>
             </div>
 
-            <div className="border-t border-gray-700 pt-4 sm:pt-6">
-              <p className="text-xs sm:text-sm text-gray-500">
-                © 2024 JPR Technosoft. All rights reserved. |
-                <span className="ml-1">
-                  Transforming careers through quality education.
-                </span>
-              </p>
+            <div className="flex items-center space-x-6 text-sm text-gray-400">
+              <div className="flex items-center">
+                <Phone className="w-4 h-4 mr-2" />
+                <span>+91 9540472951</span>
+              </div>
+              <div className="flex items-center">
+                <Mail className="w-4 h-4 mr-2" />
+                <span>info@jprtechnosoft.com</span>
+              </div>
             </div>
+          </div>
+
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+            © 2024 JPR Technosoft. All rights reserved. | Transforming careers
+            through quality education.
           </div>
         </div>
       </footer>
+
+      <style jsx>{`
+        @keyframes float {
+          0% {
+            transform: translateX(0) translateY(0);
+          }
+          100% {
+            transform: translateX(-100px) translateY(-20px);
+          }
+        }
+      `}</style>
     </div>
   );
 };

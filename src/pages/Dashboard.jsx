@@ -35,6 +35,7 @@ const Dashboard = () => {
   const fetchEnrollments = async () => {
     try {
       const response = await axiosInstance.get("/enrollments/my-enrollments");
+      console.log("Enrollments:", response.data.enrollments);
       if (response.data.success) {
         setEnrollments(response.data.enrollments);
         if (response.data.enrollments.length > 0) {
@@ -53,6 +54,7 @@ const Dashboard = () => {
       const response = await axiosInstance.get(
         `/classes/my-classes/${courseId}`
       );
+      console.log("Classes:", response.data.classes);
       if (response.data.success) {
         setClasses(response.data.classes);
       }
@@ -216,6 +218,73 @@ const Dashboard = () => {
         <div className="lg:col-span-3">
           {selectedEnrollment && (
             <>
+              {/* Classes Section */}
+              <div className="bg-white rounded-lg shadow-lg p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-6">
+                  {selectedEnrollment.status === "confirmed" &&
+                  !selectedEnrollment.paymentMethod
+                    ? "Demo Classes"
+                    : "Classes"}
+                </h3>
+
+                {classes.length === 0 ? (
+                  <div className="text-center py-8">
+                    <Calendar className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                    <p className="text-gray-600">No classes scheduled yet.</p>
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    {classes.map((classItem) => (
+                      <div
+                        key={classItem._id}
+                        className="border rounded-lg p-4 hover:shadow-md transition duration-300">
+                        <div className="flex justify-between items-start">
+                          <div className="flex-1">
+                            <h4 className="font-semibold text-gray-900 mb-2">
+                              {classItem.title}
+                            </h4>
+                            <div className="flex items-center text-gray-600 mb-2">
+                              <Calendar className="h-4 w-4 mr-2" />
+                              <span>
+                                {new Date(
+                                  classItem.scheduledAt
+                                ).toLocaleString()}
+                              </span>
+                            </div>
+                            <div className="flex items-center text-gray-600 mb-4">
+                              <Clock className="h-4 w-4 mr-2" />
+                              <span>{classItem.duration} minutes</span>
+                            </div>
+
+                            {classItem.type === "demo" && (
+                              <span className="inline-block bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">
+                                Demo Class
+                              </span>
+                            )}
+                          </div>
+
+                          <div className="text-right ml-4">
+                            <div className="text-sm text-gray-500 mb-2">
+                              {getTimeUntilClass(classItem.scheduledAt)}
+                            </div>
+                            {classItem.zoomLink && (
+                              <a
+                                href={classItem.zoomLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                                <Play className="h-4 w-4 mr-2" />
+                                Join Class
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
               {/* Course Status Card */}
               <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
                 <div className="flex justify-between items-start mb-4">
@@ -309,73 +378,6 @@ const Dashboard = () => {
                       </div>
                     </div>
                   )}
-              </div>
-
-              {/* Classes Section */}
-              <div className="bg-white rounded-lg shadow-lg p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-6">
-                  {selectedEnrollment.status === "confirmed" &&
-                  !selectedEnrollment.paymentMethod
-                    ? "Demo Classes"
-                    : "Classes"}
-                </h3>
-
-                {classes.length === 0 ? (
-                  <div className="text-center py-8">
-                    <Calendar className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                    <p className="text-gray-600">No classes scheduled yet.</p>
-                  </div>
-                ) : (
-                  <div className="space-y-4">
-                    {classes.map((classItem) => (
-                      <div
-                        key={classItem._id}
-                        className="border rounded-lg p-4 hover:shadow-md transition duration-300">
-                        <div className="flex justify-between items-start">
-                          <div className="flex-1">
-                            <h4 className="font-semibold text-gray-900 mb-2">
-                              {classItem.title}
-                            </h4>
-                            <div className="flex items-center text-gray-600 mb-2">
-                              <Calendar className="h-4 w-4 mr-2" />
-                              <span>
-                                {new Date(
-                                  classItem.scheduledAt
-                                ).toLocaleString()}
-                              </span>
-                            </div>
-                            <div className="flex items-center text-gray-600 mb-4">
-                              <Clock className="h-4 w-4 mr-2" />
-                              <span>{classItem.duration} minutes</span>
-                            </div>
-
-                            {classItem.type === "demo" && (
-                              <span className="inline-block bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">
-                                Demo Class
-                              </span>
-                            )}
-                          </div>
-
-                          <div className="text-right ml-4">
-                            <div className="text-sm text-gray-500 mb-2">
-                              {getTimeUntilClass(classItem.scheduledAt)}
-                            </div>
-                            {classItem.zoomLink && (
-                              <a
-                                href={classItem.zoomLink}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
-                                <Play className="h-4 w-4 mr-2" />
-                                Join Class
-                              </a>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
               </div>
             </>
           )}
