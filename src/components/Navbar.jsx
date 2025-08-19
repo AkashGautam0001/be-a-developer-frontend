@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import axiosInstance from "../utils/axios";
-import { BookOpen, LogOut, User, Menu, X } from "lucide-react";
+import { BookOpen, LogOut, User, Menu, X, User2 } from "lucide-react";
 
 const Navbar = () => {
   const { user, logout } = useAuth();
@@ -26,9 +26,8 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gray-900 border-b border-gray-800 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
-          {/* Logo */}
           <div className="flex items-center">
             <Link
               to="/"
@@ -90,7 +89,7 @@ const Navbar = () => {
               {mobileMenuOpen ? (
                 <X className="h-6 w-6" />
               ) : (
-                <Menu className="h-6 w-6" />
+                <User2 className="h-6 w-6" />
               )}
             </button>
           </div>

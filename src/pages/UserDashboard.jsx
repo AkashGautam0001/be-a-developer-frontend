@@ -63,6 +63,7 @@ const UserDashboard = () => {
         `/classes/my-classes/${courseId}`
       );
       const data = response.data;
+      console.log("Fetched classes:", data);
       setClasses(data.classes || []);
     } catch (error) {
       console.error("Error fetching classes:", error);
@@ -461,12 +462,12 @@ const UserDashboard = () => {
           <h3 className="text-xl font-semibold mb-3">
             Join Our WhatsApp Community
           </h3>
-          <p className="text-gray-400 mb-6 max-w-md mx-auto">
+          <p className="text-gray-400 mb-6 mx-auto">
             Stay updated with important announcements, class reminders, study
             materials, and connect with fellow students.
           </p>
 
-          <div className="space-y-4 max-w-sm mx-auto">
+          <div className="space-y-4 mx-auto">
             <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-4">
               <h4 className="font-medium text-green-400 mb-2">
                 Benefits of Joining:

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 import {
   Users,
   BookOpen,
@@ -35,7 +34,7 @@ const AdminDashboard = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-500"></div>
       </div>
     );
   }
@@ -92,8 +91,8 @@ const AdminDashboard = () => {
   ];
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
+    <div className="space-y-6 text-white min-h-screen p-5">
+      <h1 className="text-2xl font-bold text-white">Dashboard</h1>
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -102,7 +101,7 @@ const AdminDashboard = () => {
           return (
             <div
               key={stat.name}
-              className="bg-white overflow-hidden shadow rounded-lg">
+              className="bg-zinc-800/50 border border-zinc-700 overflow-hidden shadow-lg rounded-lg">
               <div className="p-5">
                 <div className="flex items-center">
                   <div className="flex-shrink-0">
@@ -112,10 +111,10 @@ const AdminDashboard = () => {
                   </div>
                   <div className="ml-5 w-0 flex-1">
                     <dl>
-                      <dt className="text-sm font-medium text-gray-500 truncate">
+                      <dt className="text-sm font-medium text-zinc-400 truncate">
                         {stat.name}
                       </dt>
-                      <dd className="text-lg font-medium text-gray-900">
+                      <dd className="text-lg font-medium text-white">
                         {stat.value}
                       </dd>
                     </dl>
@@ -129,7 +128,7 @@ const AdminDashboard = () => {
 
       {/* Revenue Cards */}
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-        <div className="bg-white overflow-hidden shadow rounded-lg">
+        <div className="bg-zinc-800/50 border border-zinc-700 overflow-hidden shadow-lg rounded-lg">
           <div className="p-5">
             <div className="flex items-center">
               <div className="flex-shrink-0">
@@ -139,10 +138,10 @@ const AdminDashboard = () => {
               </div>
               <div className="ml-5 w-0 flex-1">
                 <dl>
-                  <dt className="text-sm font-medium text-gray-500 truncate">
+                  <dt className="text-sm font-medium text-zinc-400 truncate">
                     Total Revenue
                   </dt>
-                  <dd className="text-lg font-medium text-gray-900">
+                  <dd className="text-lg font-medium text-white">
                     ₹{stats?.totalRevenue?.toLocaleString() || 0}
                   </dd>
                 </dl>
@@ -150,8 +149,7 @@ const AdminDashboard = () => {
             </div>
           </div>
         </div>
-
-        <div className="bg-white overflow-hidden shadow rounded-lg">
+        <div className="bg-zinc-800/50 border border-zinc-700 overflow-hidden shadow-lg rounded-lg">
           <div className="p-5">
             <div className="flex items-center">
               <div className="flex-shrink-0">
@@ -161,10 +159,10 @@ const AdminDashboard = () => {
               </div>
               <div className="ml-5 w-0 flex-1">
                 <dl>
-                  <dt className="text-sm font-medium text-gray-500 truncate">
+                  <dt className="text-sm font-medium text-zinc-400 truncate">
                     Monthly Revenue
                   </dt>
-                  <dd className="text-lg font-medium text-gray-900">
+                  <dd className="text-lg font-medium text-white">
                     ₹{stats?.monthlyRevenue?.toLocaleString() || 0}
                   </dd>
                 </dl>

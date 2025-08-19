@@ -24,6 +24,7 @@ import ReactWebinarLanding from "./pages/course_pages/React";
 import UIUXCourseLanding from "./pages/course_pages/UiUxPage";
 import DevOpsCourseLanding from "./pages/course_pages/DevOops";
 import UserDashboard from "./pages/UserDashboard";
+import { Toaster } from "react-hot-toast";
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -42,6 +43,7 @@ const ProtectedRoute = ({ children }) => {
 
 const AdminProtectedRoute = ({ children }) => {
   const { admin, loading } = useAuth();
+  console.log("admin", admin);
 
   if (loading) {
     return (
@@ -59,8 +61,30 @@ const App = () => {
   return (
     <Router>
       <AuthProvider>
+        <Toaster
+          position="bottom-right"
+          toastOptions={{
+            duration: 3000,
+            style: {
+              background: "#27272a",
+              color: "#fff",
+              border: "1px solid #3f3f46",
+            },
+            success: {
+              iconTheme: {
+                primary: "#10b981",
+                secondary: "#fff",
+              },
+            },
+            error: {
+              iconTheme: {
+                primary: "#ef4444",
+                secondary: "#fff",
+              },
+            },
+          }}
+        />
         <div className="min-h-screen bg-gray-50">
-          <Navbar />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
@@ -109,6 +133,7 @@ const App = () => {
               element={
                 <ProtectedRoute>
                   {/* <Dashboard /> */}
+                  <Navbar />
                   <UserDashboard />
                 </ProtectedRoute>
               }

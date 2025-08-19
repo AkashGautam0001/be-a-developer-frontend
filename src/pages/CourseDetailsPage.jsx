@@ -6,6 +6,7 @@ import axiosInstance from "../utils/axios";
 
 const CourseDetailsPage = () => {
   const { slug } = useParams();
+  console.log("Course slug:", slug);
   const { user } = useAuth();
   const navigate = useNavigate();
   const [course, setCourse] = useState(null);
@@ -18,6 +19,7 @@ const CourseDetailsPage = () => {
   const fetchCourse = async () => {
     try {
       const response = await axiosInstance.get(`/courses/${slug}`);
+      console.log("Course response:", response.data);
       if (response.data.success) {
         setCourse(response.data.course);
       }

@@ -32,35 +32,34 @@ const Enrollments = () => {
   if (loading && currentPage === 1) {
     return (
       <div className="flex justify-center items-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-500"></div>
       </div>
     );
   }
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-900">All Enrollments</h1>
-
-      <div className="bg-white shadow overflow-hidden sm:rounded-md">
-        <ul className="divide-y divide-gray-200">
+    <div className="space-y-6 text-white p-5">
+      <h1 className="text-2xl font-bold text-white">All Enrollments</h1>
+      <div className="bg-zinc-800/50 border border-zinc-700 shadow-lg overflow-hidden sm:rounded-md">
+        <ul className="divide-y divide-zinc-700">
           {enrollments.map((enrollment) => (
             <li key={enrollment._id} className="px-6 py-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <div className="flex-shrink-0">
-                    <div className="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center">
-                      <Users className="h-5 w-5 text-gray-600" />
+                    <div className="h-10 w-10 rounded-full bg-zinc-700 flex items-center justify-center">
+                      <Users className="h-5 w-5 text-zinc-400" />
                     </div>
                   </div>
                   <div className="ml-4">
-                    <div className="text-sm font-medium text-gray-900">
+                    <div className="text-sm font-medium text-white">
                       {enrollment.user?.name || "N/A"}
                     </div>
-                    <div className="text-sm text-gray-500">
+                    <div className="text-sm text-zinc-400">
                       {enrollment.user?.email || "N/A"} •{" "}
                       {enrollment.user?.phone || "N/A"}
                     </div>
-                    <div className="text-sm text-gray-500">
+                    <div className="text-sm text-zinc-400">
                       Course: {enrollment.course?.title || "N/A"}
                     </div>
                   </div>
@@ -69,8 +68,8 @@ const Enrollments = () => {
                   <span
                     className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                       enrollment.confirmationFeePaid
-                        ? "bg-green-100 text-green-800"
-                        : "bg-red-100 text-red-800"
+                        ? "bg-green-900/30 text-green-400 border border-green-500/50"
+                        : "bg-red-900/30 text-red-400 border border-red-500/50"
                     }`}>
                     {enrollment.confirmationFeePaid
                       ? "Confirmation Paid"
@@ -79,13 +78,13 @@ const Enrollments = () => {
                   <span
                     className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                       enrollment.status === "ACTIVE"
-                        ? "bg-green-100 text-green-800"
-                        : "bg-yellow-100 text-yellow-800"
+                        ? "bg-green-900/30 text-green-400 border border-green-500/50"
+                        : "bg-yellow-900/30 text-yellow-400 border border-yellow-500/50"
                     }`}>
                     {enrollment.status || "PENDING"}
                   </span>
                   {enrollment.paymentMethod && (
-                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-900/30 text-blue-400 border border-blue-500/50">
                       {enrollment.paymentMethod}
                     </span>
                   )}
@@ -99,7 +98,7 @@ const Enrollments = () => {
       {/* Pagination */}
       {pagination.pages > 1 && (
         <div className="flex justify-between items-center">
-          <div className="text-sm text-gray-700">
+          <div className="text-sm text-zinc-400">
             Showing {(currentPage - 1) * pagination.limit + 1} to{" "}
             {Math.min(currentPage * pagination.limit, pagination.total)} of{" "}
             {pagination.total} results
@@ -108,7 +107,7 @@ const Enrollments = () => {
             <button
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
-              className="px-3 py-1 text-sm bg-gray-200 text-gray-700 rounded disabled:opacity-50">
+              className="px-3 py-1 text-sm bg-zinc-700 text-zinc-300 rounded disabled:opacity-50 hover:bg-zinc-600 transition-colors">
               Previous
             </button>
             <span className="px-3 py-1 text-sm bg-indigo-600 text-white rounded">
@@ -119,7 +118,7 @@ const Enrollments = () => {
                 setCurrentPage((prev) => Math.min(prev + 1, pagination.pages))
               }
               disabled={currentPage === pagination.pages}
-              className="px-3 py-1 text-sm bg-gray-200 text-gray-700 rounded disabled:opacity-50">
+              className="px-3 py-1 text-sm bg-zinc-700 text-zinc-300 rounded disabled:opacity-50 hover:bg-zinc-600 transition-colors">
               Next
             </button>
           </div>

@@ -373,7 +373,7 @@ const GenAIWebinarLanding = () => {
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
                   <stat.icon className="w-8 h-8 text-white" />
                 </div>
-                <div className="text-3xl sm:text-4xl font-black text-white mb-2 bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+                <div className="text-3xl sm:text-4xl font-black mb-2 bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
                   {stat.number}
                 </div>
                 <div className="text-gray-300 font-semibold">{stat.label}</div>

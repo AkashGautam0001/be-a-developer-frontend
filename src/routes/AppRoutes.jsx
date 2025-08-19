@@ -5,6 +5,7 @@ import Courses from "../components/Courses";
 import PaymentPending from "../components/PaymentPending";
 import MonthlyReminders from "../components/MonthlyReminders";
 import { Navigate, Route, Routes } from "react-router-dom";
+import CourseClassess from "../pages/Admin/CourseClassess";
 const AppRoutes = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
@@ -12,7 +13,7 @@ const AppRoutes = () => {
         <Route path="/dashboard" element={<AdminDashboard />} />
         <Route path="/enrollments" element={<Enrollments />} />
         <Route path="/courses" element={<Courses />} />
-        {/* <Route path="/courses/:slug/classes" element={<Classes />} /> */}
+        <Route path="/courses/:courseId/classes" element={<CourseClassess />} />
         <Route path="/payment-pending" element={<PaymentPending />} />
         <Route path="/monthly-reminders" element={<MonthlyReminders />} />
         <Route
