@@ -30,53 +30,129 @@ import {
   Globe,
   Phone,
   Mail,
+
+
 } from "lucide-react";
 import AboutJprTechnosoft from "../../components/AboutJprTechnosoft";
 import ContactSection from "../../components/ContactSection";
 import Footer from "../../components/Footer";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import EnrollButton from "../../components/EnrollButton";
+import axiosInstance from "../../utils/axios";
+import Countdown from "../../components/Timer";
+import news1 from "../../assets/news1.jpeg";
+import news2 from "../../assets/news2.jpeg";
+import news3 from "../../assets/news3.jpeg";
+import news4 from "../../assets/news4.jpeg";
+import professional_img from "../../assets/professionals.svg";
 
 const GenAIWebinarLanding = () => {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
 
-  const [isVisible, setIsVisible] = useState({});
   const navigate = useNavigate();
+  const [course, setCourse] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [hoveredCard, setHoveredCard] = useState(null);
 
   useEffect(() => {
-    const updateCountdown = () => {
-      const targetDate = new Date();
-      targetDate.setDate(targetDate.getDate() + 3);
-      targetDate.setHours(23, 59, 59, 999);
-
-      const now = new Date().getTime();
-      const difference = targetDate.getTime() - now;
-
-      if (difference > 0) {
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-          (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        const minutes = Math.floor(
-          (difference % (1000 * 60 * 60)) / (1000 * 60)
-        );
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-        setTimeLeft({ days, hours, minutes, seconds });
-      } else {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      }
-    };
-
-    updateCountdown();
-    const interval = setInterval(updateCountdown, 1000);
-    return () => clearInterval(interval);
+    fetchCourse();
   }, []);
+
+  const fetchCourse = async () => {
+    try {
+      const response = await axiosInstance.get(`/courses/genai-using-python-mastery-course`);
+      console.log("Course response:", response.data);
+      if (response.data.success) {
+        setCourse(response.data.course);
+      }
+    } catch (error) {
+      console.error("Failed to fetch course:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const scheduledAt = course?.demoClasses?.[0]?.scheduledAt || null;
+  // if (loading) {
+  //   return <div>Loading...</div>;
+
+  const offerings = [
+    {
+      id: 1,
+      module: "Offering 1",
+      title: "Career Switch Blueprint",
+      duration: "4 weeks",
+      subtitle: "1:1 Coaching",
+      description: "Personalized roadmap to move from your current role into a GenAI position.",
+      topics: [
+        "Career Assessment",
+        "Skill Gap Analysis",
+        "Learning Roadmap",
+        "Industry Insights",
+        "Network Building",
+        "Weekly Check-ins",
+        "Goal Setting",
+        "Progress Tracking"
+      ],
+      icon: Target
+    },
+    {
+      id: 2,
+      module: "Offering 2",
+      title: "Project Accelerator",
+      duration: "2–4 weeks",
+      subtitle: "Portfolio Builder",
+      description: "Turn an idea into a portfolio-worthy GenAI project, with real use-case coaching, review sessions, and publishing support.",
+      topics: [
+        "Project Ideation",
+        "Technical Architecture",
+        "Code Reviews",
+        "Best Practices",
+        "Documentation",
+        "Portfolio Design",
+        "Publishing Strategy",
+        "Presentation Skills"
+      ],
+      icon: BookOpen
+    },
+    {
+      id: 3,
+      module: "Offering 3",
+      title: "Mock Interviews & Resume Revamp",
+      duration: "Flexible",
+      subtitle: "Interview Mastery",
+      description: "Real feedback from an insider's lens — improve your pitch, positioning, and profile.",
+      topics: [
+        "Resume Optimization",
+        "Technical Interviews",
+        "Behavioral Questions",
+        "System Design",
+        "Personal Branding",
+        "LinkedIn Profile",
+        "Salary Negotiation",
+        "Follow-up Strategy"
+      ],
+      icon: Users
+    },
+    {
+      id: 4,
+      module: "Offering 4",
+      title: "Group Sessions / Masterclasses",
+      duration: "Cohort-based",
+      subtitle: "Community Learning",
+      description: "Cohort-based mini-programs focused on themes like: 'How to Think Like a GenAI Product Engineer' or 'Non-coders in GenAI: Where Do You Fit?'",
+      topics: [
+        "Product Engineering",
+        "Non-technical Roles",
+        "Industry Trends",
+        "Career Pathways",
+        "Peer Networking",
+        "Expert Sessions",
+        "Q&A Forums",
+        "Community Support"
+      ],
+      icon: Users
+    }
+  ];
 
   const features = [
     {
@@ -215,8 +291,8 @@ const GenAIWebinarLanding = () => {
   const stats = [
     { number: "500+", label: "Career Transitions", icon: Trophy },
     { number: "85%", label: "Salary Increase", icon: TrendingUp },
-    { number: "13+", label: "Years Experience", icon: Award },
-    { number: "50+", label: "Partner Companies", icon: Briefcase },
+    { number: "15+", label: "Years Experience", icon: Award },
+    { number: "10+", label: "Partner Companies", icon: Briefcase },
   ];
 
   const FloatingShape = ({ className, delay = 0 }) => (
@@ -295,8 +371,8 @@ const GenAIWebinarLanding = () => {
             </div>
 
             {/* Registration Card */}
-            <div className="bg-white/95 backdrop-blur-xl p-6 sm:p-8 rounded-3xl shadow-2xl transform hover:scale-105 transition-all duration-300 border border-white/20">
-              <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider inline-flex items-center mb-6">
+            <div className="bg-white/95 backdrop-blur-xl p-2 sm:p-4 rounded-3xl shadow-2xl   border border-white/20">
+              <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider inline-flex items-center mb-4">
                 <Target className="w-4 h-4 mr-2" />
                 Exclusive Webinar
               </div>
@@ -304,7 +380,7 @@ const GenAIWebinarLanding = () => {
               <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-800">
                 From Tutorials to Transformation
               </h2>
-              <p className="text-gray-600 mb-6 text-lg">
+              <p className="text-gray-600 mb-4 text-lg">
                 Real-World GenAI Career Guidance by JPR Technosoft
               </p>
 
@@ -320,22 +396,14 @@ const GenAIWebinarLanding = () => {
                     </h3>
                   </div>
 
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 mb-4">
-                    {Object.entries(timeLeft).map(([unit, value]) => (
-                      <div
-                        key={unit}
-                        className="text-center bg-white/15 border border-white/30 rounded-xl p-3 backdrop-blur-sm">
-                        <span className="block text-2xl sm:text-3xl font-extrabold bg-gradient-to-r from-yellow-200 to-white bg-clip-text text-transparent">
-                          {value.toString().padStart(2, "0")}
-                        </span>
-                        <span className="text-xs text-white/80 uppercase tracking-widest">
-                          {unit}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
+                  {scheduledAt ? (
+                    <Countdown scheduledAt={scheduledAt} />
+                  ) : (
+                    <p className="text-white/70">No demo class scheduled</p>
+                  )}
+
                   <p className="text-sm opacity-90 font-semibold">
-                    ⚡ Only 50 seats available!
+                    ⚡ Limited seats available!
                   </p>
                 </div>
               </div>
@@ -346,10 +414,7 @@ const GenAIWebinarLanding = () => {
               />
 
               <div className="grid grid-cols-2 gap-4 mt-6 text-sm text-gray-600">
-                <div className="flex items-center">
-                  <Check className="w-4 h-4 text-green-500 mr-2" />
-                  <span>Instant Access</span>
-                </div>
+
                 <div className="flex items-center">
                   <Check className="w-4 h-4 text-green-500 mr-2" />
                   <span>Certificate Included</span>
@@ -395,15 +460,15 @@ const GenAIWebinarLanding = () => {
               </span>
             </h2>
 
-            <div className="bg-white/10 backdrop-blur-xl p-8 sm:p-12 rounded-3xl border border-white/20 relative">
+            <div className="bg-white/10 backdrop-blur-xl p-6 sm:p-12 rounded-3xl border border-white/20 relative">
               <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
                 <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-6 py-2 rounded-full font-bold text-sm">
                   INDUSTRY EXPERT
                 </div>
               </div>
 
-              <div className="text-7xl sm:text-8xl font-black mb-6 bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
-                13+
+              <div className="text-7xl sm:text-8xl font-black mb-4 bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+                15+
               </div>
 
               <h3 className="text-2xl sm:text-3xl font-bold mb-6">
@@ -415,7 +480,7 @@ const GenAIWebinarLanding = () => {
                 <strong className="text-yellow-400">JPR Technosoft</strong> have
                 been at the forefront of AI/ML innovation, working on
                 enterprise-scale solutions, real-time ML pipelines, and
-                cutting-edge GenAI applications.
+                cutting-edge GenAI applications.We help professionals transition into the world of Generative AI through career-focused coaching and mentorship, not just tutorials.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm">
@@ -438,7 +503,7 @@ const GenAIWebinarLanding = () => {
       </section>
 
       {/* Curriculum Section */}
-      <section className="bg-gray-50 py-20">
+      {/* <section className="bg-gray-50 py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-800">
@@ -487,14 +552,114 @@ const GenAIWebinarLanding = () => {
             ))}
           </div>
         </div>
+      </section> */}
+
+      <section className="bg-gray-50 py-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-800">
+              What You'll Get
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Comprehensive career transformation programs designed to accelerate your journey into GenAI
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto space-y-8">
+            {offerings.map((offering, index) => {
+              const IconComponent = offering.icon;
+              return (
+                <div
+                  key={index}
+                  className={`bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border-l-4 border-gradient-to-b from-blue-500 to-purple-600 transform hover:scale-[1.02] ${hoveredCard === offering.id ? 'shadow-2xl shadow-purple-500/20' : ''
+                    }`}
+                  onMouseEnter={() => setHoveredCard(offering.id)}
+                  onMouseLeave={() => setHoveredCard(null)}
+                  style={{
+                    borderLeftColor: index % 4 === 0 ? '#8b5cf6' :
+                      index % 4 === 1 ? '#3b82f6' :
+                        index % 4 === 2 ? '#10b981' : '#f59e0b'
+                  }}
+                >
+                  <div className="p-6 sm:p-8">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6">
+                      <div className="flex items-center gap-4 mb-4 sm:mb-0">
+                        <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                          {offering.module}
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <IconComponent className="w-6 h-6 text-gray-700" />
+                          <div>
+                            <h3 className="text-xl sm:text-2xl font-bold text-gray-800">
+                              {offering.title}
+                            </h3>
+                            <p className="text-gray-600 text-sm font-medium">{offering.subtitle}</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2 text-gray-600 bg-gray-100 px-3 py-2 rounded-lg">
+                        <Clock className="w-4 h-4" />
+                        <span className="font-semibold">{offering.duration}</span>
+                      </div>
+                    </div>
+
+                    <p className="text-gray-700 mb-6 leading-relaxed">
+                      {offering.description}
+                    </p>
+
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                      {offering.topics.map((topic, topicIndex) => (
+                        <div
+                          key={topicIndex}
+                          className={`bg-gray-50 hover:bg-gradient-to-r rounded-lg p-3 text-center transition-all duration-300 cursor-pointer group ${hoveredCard === offering.id
+                            ? index % 4 === 0 ? 'hover:from-purple-50 hover:to-purple-100' :
+                              index % 4 === 1 ? 'hover:from-blue-50 hover:to-blue-100' :
+                                index % 4 === 2 ? 'hover:from-emerald-50 hover:to-emerald-100' : 'hover:from-amber-50 hover:to-amber-100'
+                            : 'hover:bg-gray-100'
+                            }`}
+                        >
+                          <span className="text-sm font-medium text-gray-700 group-hover:text-gray-800 transition-colors">
+                            {topic}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Bottom CTA */}
+          <div className="text-center mt-16">
+            <div className="bg-white rounded-2xl shadow-xl p-8 max-w-2xl mx-auto">
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">
+                Ready to Transform Your Career?
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Join hundreds of professionals who've successfully transitioned into GenAI roles
+              </p>
+              <button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                Start Your Journey Today
+              </button>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Features Section */}
-      <section className="bg-white py-20">
+      <section className="bg-gradient-to-br from-green-50 to-blue-50 py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-16 text-gray-800">
+          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-3 text-gray-800">
             What Makes This Webinar Different?
           </h2>
+          <h3 className=" font-bold text-center  text-gray-800">Not a Tutorial. Not a Course</h3>
+          <p className="  text-center mb-6 text-gray-800">This is not about walking through code or tools that change every few weeks.
+            This is practical, career-focused guidance on:
+          </p>
 
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
             {features.map((feature, index) => (
@@ -521,6 +686,53 @@ const GenAIWebinarLanding = () => {
           </div>
         </div>
       </section>
+
+      {/* Who is this for Section */}
+      <section className="bg-white py-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Title */}
+          <h2 className="text-4xl sm:text-5xl font-bold text-center mb-12 text-gray-800">
+            Who is this program for?
+          </h2>
+
+          {/* 2-column layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left side - Points */}
+            <div>
+              <ul className="space-y-4 text-lg text-gray-700">
+                <li className="flex items-start">
+                  <span className="text-green-600 font-bold mr-2">✔</span>
+                  Mid-level tech professionals looking to move into Generative AI
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 font-bold mr-2">✔</span>
+                  Software engineers, data scientists, product managers, or designers
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 font-bold mr-2">✔</span>
+                  Non-traditional backgrounds (QA, support, content) wanting to find real roles in GenAI
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 font-bold mr-2">✔</span>
+                  Anyone confused by the noise and wanting clarity & direction, not just another “GPT-4 tutorial”
+                </li>
+              </ul>
+            </div>
+
+            {/* Right side - Image */}
+            <div className="flex justify-center">
+              <img
+                src={professional_img}
+                alt="Professional"
+                className="w-80 h-auto object-contain  "
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
 
       {/* Bonuses Section */}
       {/* <section className="bg-gradient-to-br from-green-50 to-blue-50 py-20">
@@ -621,9 +833,33 @@ const GenAIWebinarLanding = () => {
           </div>
         </div>
       </section>
+      {/* NewPaper section */}
+      <section className="bg-gradient-to-br from-green-50 to-blue-50 py-15">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-5xl text-center font-bold mb-6 text-gray-800">
+            From Fture of Jobs Report 2025 By WORLD ECONOMIC FORUM
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-6">
+            <div className="overflow-hidden rounded-2xl shadow-lg transition-transform duration-300">
+              <img src={news1} alt="news1" className="w-full h-60 object-cover" />
+            </div>
+            <div className="overflow-hidden rounded-2xl shadow-lg transition-transform duration-300">
+              <img src={news2} alt="news2" className="w-full h-60 object-cover" />
+            </div>
+            <div className="overflow-hidden rounded-2xl shadow-lg  transition-transform duration-300">
+              <img src={news3} alt="news3" className="w-full h-60 object-cover" />
+            </div>
+            <div className="overflow-hidden rounded-2xl shadow-lg transition-transform duration-300">
+              <img src={news4} alt="news4" className="w-full h-60 object-cover" />
+            </div>
+          </div>
+
+        </div>
+      </section>
 
       {/* FAQ Section */}
-      <section className="bg-gray-50 py-20">
+      <section className="bg-gradient-to-br from-green-50 to-blue-50 py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-800">
@@ -636,11 +872,7 @@ const GenAIWebinarLanding = () => {
 
           <div className="max-w-3xl mx-auto space-y-4">
             {[
-              {
-                question: "Is this webinar really free?",
-                answer:
-                  "Yes! This is a completely free webinar. We're offering it as a way to provide value to the community and showcase our teaching methodology.",
-              },
+
               {
                 question: "What if I miss the live session?",
                 answer:
@@ -710,7 +942,7 @@ const GenAIWebinarLanding = () => {
                 <div>
                   <div className="text-2xl font-bold text-yellow-300">⚡</div>
                   <div className="text-lg font-semibold">Limited Seats</div>
-                  <div className="text-sm opacity-80">Only 50 Available</div>
+                  <div className="text-sm opacity-80">Limited seats Available</div>
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-yellow-300">🎯</div>
