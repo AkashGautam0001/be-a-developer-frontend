@@ -4,7 +4,6 @@ import axiosInstance from "../utils/axios";
 import {
   CheckCircle,
   CreditCard,
-  Sparkles,
   Coffee,
   Hamburger as Burger,
 } from "lucide-react";
@@ -18,6 +17,7 @@ const PaymentConfirmationPage = () => {
   const [course, setCourse] = useState(null);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   useEffect(() => {
     fetchCourse();
@@ -74,9 +74,9 @@ const PaymentConfirmationPage = () => {
                 }
               );
               if (verifyResponse.data.success) {
-                setMessage("Payment successful! Redirecting to dashboard...");
+                setMessage("Payment successful!");
                 localStorage.removeItem("enrollmentId");
-                setTimeout(() => navigate("/dashboard"), 1500);
+                setShowSuccessModal(true); // ✅ Show popup on success
               }
             } catch {
               setMessage("Payment verification failed");
@@ -117,7 +117,9 @@ const PaymentConfirmationPage = () => {
                 className="w-[50px] group-hover:scale-105 transition-transform"
               />
             </Link>
+
             <span className="text-sm text-green-400 font-medium">
+              <CheckCircle className="inline-block h-4 w-4 mr-1" />
               Registration Complete!
             </span>
           </div>
@@ -126,10 +128,12 @@ const PaymentConfirmationPage = () => {
 
       {/* Two-column layout */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* LEFT: Course + Value */}
           <section className="bg-gray-800 border order-2 md:order-1 border-gray-700 rounded-xl p-6 md:p-8">
-            <h2 className="text-2xl font-bold mb-2">Generative AI Webinar</h2>
+            <h2 className="text-2xl font-bold mb-2">
+              Generative AI Career Program
+            </h2>
             <p className="text-gray-400 mb-6">
               The most comprehensive and practical GenAI learning experience 🚀
             </p>
@@ -160,11 +164,7 @@ const PaymentConfirmationPage = () => {
             <div className="mt-8 bg-gray-700/60 border border-gray-600 rounded-lg p-4">
               <p className="text-sm text-gray-300 leading-relaxed">
                 <span className="font-semibold text-gray-200">Note: </span>
-                This is{" "}
-                <span className="text-white font-semibold">
-                  not the full course fee
-                </span>
-                . It’s a small confirmation amount to secure your seat in our
+                It’s a small confirmation amount to secure your seat in our
                 upcoming webinar. Only those who are truly interested in
                 learning how Generative AI can
                 <span className="text-white font-semibold">
@@ -179,8 +179,9 @@ const PaymentConfirmationPage = () => {
           {/* RIGHT: Congrats + Payment */}
           <section className="bg-gray-800 border order-1 md:order-2 border-gray-700 rounded-xl p-6 md:p-8">
             <div className="flex flex-col items-center text-center">
-              <CheckCircle className="h-10 w-10 text-green-500 mb-3" />
-              <h2 className="text-2xl font-bold mb-2">🎉 Congratulations!</h2>
+              <h2 className="text-2xl font-bold mb-2 md:mb-6">
+                🎉 Congratulations!
+              </h2>
               <p className="text-gray-400 mb-6">
                 Your registration was successful. Complete your payment below to
                 confirm your seat and unlock instant access.
@@ -228,13 +229,8 @@ const PaymentConfirmationPage = () => {
               )}
             </button>
 
-            <div className="mt-6 text-sm text-gray-400 text-center leading-relaxed">
-              ✅ Once your payment is confirmed, you’ll instantly receive a
-              <span className="text-white font-semibold">
-                {" "}
-                confirmation email{" "}
-              </span>
-              and be added to our
+            <div className="mt-6 text-md text-gray-400 text-center leading-relaxed">
+              ✅ Once your payment is confirmed, you’ll be added to our
               <span className="text-white font-semibold">
                 {" "}
                 exclusive WhatsApp group{" "}
@@ -247,6 +243,31 @@ const PaymentConfirmationPage = () => {
 
       <AboutJprTechnosoft />
       <Footer />
+
+      {/* ✅ Success Modal */}
+      {showSuccessModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/70 z-50">
+          <div className="bg-gray-800 text-gray-100 rounded-2xl shadow-xl w-[90%] max-w-md p-6 text-center">
+            <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
+            <h2 className="text-2xl font-bold mb-2">
+              Successfully Enrolled! 🎉
+            </h2>
+            <p className="text-gray-300 mb-6">
+              You’ve been successfully enrolled in the course. We will{" "}
+              <span className="text-white font-semibold">
+                {" "}
+                add you to our exclusive WhatsApp group{" "}
+              </span>
+              for direct updates, resources, and community support. 🚀
+            </p>
+            <button
+              onClick={() => navigate(`/courses/${slug}`)} // ✅ Redirect to course homepage
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition">
+              Go to Course Homepage
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

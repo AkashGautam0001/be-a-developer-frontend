@@ -19,7 +19,7 @@ const Footer = () => {
             <h4 className="text-lg font-bold mb-4">Contact Info</h4>
             <div className="space-y-2 text-gray-400">
               <div>📧 info@jprtechnosoft.com</div>
-              <div>📞 +91 9876543210</div>
+              <div>📞 +91 8447087821</div>
             </div>
           </div>
 
