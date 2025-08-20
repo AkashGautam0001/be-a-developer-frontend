@@ -337,7 +337,7 @@ const GenAIWebinarLanding = () => {
             </div>
 
             {/* Registration Card */}
-            <div className="bg-white/95 backdrop-blur-xl p-2 sm:p-4 rounded-3xl shadow-2xl   border border-white/20">
+            <div className="bg-white/95 backdrop-blur-xl p-2 mb-8 sm:p-4 rounded-3xl shadow-2xl   border border-white/20">
               <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider inline-flex items-center mb-4">
                 <Target className="w-4 h-4 mr-2" />
                 Exclusive Webinar
@@ -351,7 +351,7 @@ const GenAIWebinarLanding = () => {
               </p>
 
               {/* Timer */}
-              <div className="bg-gradient-to-r from-red-500 to-orange-500 text-white p-6 rounded-2xl text-center mb-6 shadow-lg relative overflow-hidden">
+              <div className="bg-gradient-to-r from-red-500 to-orange-500  text-white p-6 rounded-2xl text-center mb-6 shadow-lg relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-red-600/50 to-orange-600/50 animate-pulse" />
 
                 <div className="relative z-10">
