@@ -10,6 +10,7 @@ const AppRoutes = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
+        <Route path="/" element={<AdminDashboard />} />
         <Route path="/dashboard" element={<AdminDashboard />} />
         <Route path="/enrollments" element={<Enrollments />} />
         <Route path="/courses" element={<Courses />} />
