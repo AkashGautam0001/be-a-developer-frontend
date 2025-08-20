@@ -60,7 +60,7 @@ const PaymentConfirmationPage = () => {
           key: response.data.key,
           amount: response.data.order.amount,
           currency: response.data.order.currency,
-          name: "Be A Developer",
+          name: "JPR Technosoft",
           description: "Confirmation Fee",
           order_id: response.data.order.id,
           handler: async function (resp) {
