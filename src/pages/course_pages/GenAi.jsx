@@ -308,13 +308,13 @@ const GenAIWebinarLanding = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center justify-center">
             {/* Hero Text */}
-            <div className="text-center lg:text-left text-white space-y-6">
+            <div className="text-left lg:text-left text-white space-y-5">
               <div className="inline-flex items-center bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 rounded-full px-4 py-2 text-yellow-400 text-sm font-semibold mb-6">
                 <Sparkles className="w-4 h-4 mr-2" />
                 Limited Time Offer
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black leading-tight">
+              <h1 className="text-3xl sm:text-4xl lg:text-7xl font-black leading-tight">
                 <span className="bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
                   Shape Your Future in
                 </span>
@@ -420,35 +420,35 @@ const GenAIWebinarLanding = () => {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8">
+            <h2 className="text-2xl sm:text-5xl lg:text-6xl font-bold mb-10">
               <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
                 Learn from Industry Veterans
               </span>
             </h2>
 
-            <div className="bg-white/10 backdrop-blur-xl p-6 sm:p-12 rounded-3xl border border-white/20 relative">
-              <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 mb-4">
-                <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-4 py-1 rounded-full font-bold text-sm">
+            <div className="bg-white/10 backdrop-blur-xl p-4 sm:p-12 rounded-3xl border border-white/20 relative">
+              <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 mb-6">
+                <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-5 py-2 lg:px-6 lg:py-4 rounded-full font-bold text-sm">
                   INDUSTRY EXPERT
                 </div>
               </div>
 
-              <div className="text-5xl sm:text-8xl mt-4 font-black mb-4 bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+              <div className="text-5xl sm:text-8xl lg:mt-1 mt-4 font-black mb-4 bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
                 15+
               </div>
 
-              <h3 className="text-2xl sm:text-xl font-bold mb-5">
+              <h3 className="text-xl lg:text-2xl lg:mb-2 sm:text-xl font-bold mb-5">
                 Years of Industry Expertise
               </h3>
 
-              <p className="text-sm  leading-relaxed text-gray-200 mb-5">
+              <p className="text-sm lg:text-xl  leading-relaxed text-gray-200 mb-5">
                 Our experts from{" "}
                 <strong className="text-yellow-400 items-center">JPR Technosoft</strong> have
                 been at the forefront of AI/ML innovation, working on
                 enterprise-scale solutions, real-time ML pipelines, and
                 cutting-edge GenAI applications.   </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 text-sm">
                 <div className="flex items-center justify-center gap-2">
                   <Brain className="w-5 h-5 text-blue-400" />
                   <span>AI/ML Architecture</span>
