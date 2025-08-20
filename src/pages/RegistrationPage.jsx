@@ -134,7 +134,8 @@ const RegistrationPage = () => {
                 </span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 leading-tight">
-                {course.title}
+                {/* {course.title} */}
+                Generative AI Career Program
               </h2>
               {/* <p className="text-blue-100 text-base sm:text-lg">
                 {course.description}
@@ -250,7 +251,7 @@ const RegistrationPage = () => {
 
               <div>
                 <label className="block text-xs sm:text-sm font-medium text-gray-300 mb-2">
-                  Phone Number * (important for Whatsapp group and
+                  Phone Number * (important for Whatsapp group and important
                   notifications)
                 </label>
                 <input

@@ -13,8 +13,9 @@ const AboutJprTechnosoft = () => {
             <p className="text-xl text-gray-300 mb-8 leading-relaxed">
               JPR Technosoft is a leading technology education company
               specializing in cutting-edge AI/ML training and career
-              development. With over of industry experience, we've helped
-              hundreds of professionals transition into high-paying AI careers.
+              development. With over 10 years of industry experience, we've
+              helped hundreds of professionals transition into high-paying AI
+              careers.
             </p>
           </div>
           <div className="lg:text-center">

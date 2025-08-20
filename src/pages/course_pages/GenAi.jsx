@@ -7,35 +7,21 @@ import {
   Users,
   TrendingUp,
   Clock,
-  Rocket,
   Check,
   Star,
-  Zap,
-  IndianRupee,
   Brain,
   Code,
   Trophy,
-  ArrowRight,
-  Play,
   Award,
   BookOpen,
-  MessageCircle,
-  Calendar,
-  MapPin,
-  ChevronDown,
   Sparkles,
   Shield,
-  Gift,
   Lamp as Lightning,
-  Globe,
-  Phone,
-  Mail,
-  Link,
+  CheckCircle,
 } from "lucide-react";
-import AboutJprTechnosoft from "../../components/AboutJprTechnosoft";
 import ContactSection from "../../components/ContactSection";
 import Footer from "../../components/Footer";
-import { Links, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import EnrollButton from "../../components/EnrollButton";
 import axiosInstance from "../../utils/axios";
 import Countdown from "../../components/Timer";
@@ -44,7 +30,7 @@ import news2 from "../../assets/news2.jpeg";
 import news3 from "../../assets/news3.jpeg";
 import news4 from "../../assets/news4.jpeg";
 import professional_img from "../../assets/professionals.svg";
-
+import logo from "/jpr-logo.png";
 const GenAIWebinarLanding = () => {
   const navigate = useNavigate();
   const [course, setCourse] = useState(null);
@@ -183,80 +169,6 @@ const GenAIWebinarLanding = () => {
     },
   ];
 
-  const curriculum = [
-    {
-      module: "Module 1",
-      title: "GenAI Landscape & Career Opportunities",
-      duration: "45 mins",
-      topics: [
-        "Industry Overview",
-        "Role Types & Salaries",
-        "Growth Trajectories",
-        "Market Demand Analysis",
-      ],
-    },
-    {
-      module: "Module 2",
-      title: "Building Your GenAI Portfolio",
-      duration: "60 mins",
-      topics: [
-        "Project Selection",
-        "GitHub Optimization",
-        "Demo Creation",
-        "Technical Writing",
-      ],
-    },
-    {
-      module: "Module 3",
-      title: "Transition Strategies by Background",
-      duration: "45 mins",
-      topics: [
-        "From Web Dev",
-        "From Mobile Dev",
-        "From QA/Testing",
-        "From Traditional IT",
-      ],
-    },
-    {
-      module: "Module 4",
-      title: "Interview Preparation & Networking",
-      duration: "30 mins",
-      topics: [
-        "Technical Questions",
-        "Portfolio Presentation",
-        "LinkedIn Strategy",
-        "Industry Connections",
-      ],
-    },
-  ];
-
-  const bonuses = [
-    {
-      icon: BookOpen,
-      title: "GenAI Career Roadmap Guide",
-      value: "₹2,999",
-      description: "Step-by-step career transition blueprint",
-    },
-    {
-      icon: MessageCircle,
-      title: "1-Month Community Access",
-      value: "₹1,999",
-      description: "Exclusive Discord community with peers and mentors",
-    },
-    {
-      icon: Award,
-      title: "Completion Certificate",
-      value: "₹999",
-      description: "Industry-recognized certificate for your profile",
-    },
-    {
-      icon: Lightning,
-      title: "AI Tools Masterclass",
-      value: "₹1,999",
-      description: "Bonus session on essential AI tools and platforms",
-    },
-  ];
-
   const stats = [
     { number: "500+", label: "Career Transitions", icon: Trophy },
     { number: "85%", label: "Salary Increase", icon: TrendingUp },
@@ -291,6 +203,21 @@ const GenAIWebinarLanding = () => {
         <PulsingDot className="w-3 h-3 top-1/4 right-1/4" />
         <PulsingDot className="w-2 h-2 top-3/4 left-1/3" />
       </div>
+      <header className="bg-gray-800 border-b border-gray-700">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-2">
+            <Link
+              to="/"
+              className="flex items-center group border-none outline-none">
+              <img
+                src={logo}
+                alt="JPR Technosoft"
+                className="w-[50px] group-hover:scale-105 transition-transform"
+              />
+            </Link>
+          </div>
+        </div>
+      </header>
 
       {/* Hero Section */}
       <section className="min-h-screen flex items-center relative overflow-hidden">
@@ -312,12 +239,12 @@ const GenAIWebinarLanding = () => {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center justify-center">
             {/* Hero Text */}
             <div className="text-left lg:text-left text-white space-y-5">
-              <div className="inline-flex items-center bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 rounded-full px-4 py-2 text-yellow-400 text-sm font-semibold mb-6">
-                <Sparkles className="w-4 h-4 mr-2" />
+              <div className="inline-flex items-center bg-gradient-to-r mt-3 from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 rounded-full px-4 py-2 text-yellow-400 text-sm font-semibold mb-6">
+                <Sparkles className="w-4 h-4 mr-2 " />
                 Limited Time Offer
               </div>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-7xl font-black leading-tight">
+              <h1 className="text-5xl sm:text-4xl lg:text-7xl font-black leading-tight">
                 <span className="bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
                   Shape Your Future in
                 </span>
@@ -382,7 +309,7 @@ const GenAIWebinarLanding = () => {
                 className="w-full rounded-2xl text-lg py-4"
               />
 
-              <div className="grid grid-cols-2 gap-4 mt-6 text-sm text-gray-600">
+              {/* <div className="grid grid-cols-2 gap-4 mt-6 text-sm text-gray-600">
                 <div className="flex items-center">
                   <Check className="w-4 h-4 text-green-500 mr-2" />
                   <span>Certificate Included</span>
@@ -391,14 +318,14 @@ const GenAIWebinarLanding = () => {
                   <Check className="w-4 h-4 text-green-500 mr-2" />
                   <span>Live Q&A</span>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-white/5 backdrop-blur-sm border-y border-white/10">
+      <section className="py-16 bg-white/5 backdrop-blur-sm border-y border-white/10 mt-5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -418,42 +345,59 @@ const GenAIWebinarLanding = () => {
 
       {/* Expert Section */}
       <section className="bg-gradient-to-br from-gray-900 to-black text-white py-20 relative overflow-hidden">
+        {/* subtle gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-purple-900/20" />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl sm:text-5xl lg:text-6xl font-bold mb-10">
+          <div className="max-w-5xl mx-auto">
+            {/* Heading */}
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold mb-12">
               <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
                 Learn from Industry Veterans
               </span>
             </h2>
 
-            <div className="bg-white/10 backdrop-blur-xl p-4 sm:p-12 rounded-3xl border border-white/20 relative">
-              <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 mb-6">
-                <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-5 py-2 lg:px-6 lg:py-4 rounded-full font-bold text-sm">
+            {/* Expert Card */}
+            <div className="bg-white/10 backdrop-blur-xl p-4 sm:p-12 rounded-3xl border border-white/20 relative shadow-xl">
+              {/* Badge */}
+              <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
+                <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-6 py-3 rounded-full font-bold text-sm shadow-md">
                   INDUSTRY EXPERT
                 </div>
               </div>
 
-              <div className="text-5xl sm:text-8xl lg:mt-1 mt-4 font-black mb-4 bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+              {/* Big Years Highlight */}
+              <div className="text-6xl sm:text-8xl font-black mt-6 mb-3 bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
                 15+
               </div>
-
-              <h3 className="text-xl lg:text-2xl lg:mb-2 sm:text-xl font-bold mb-5">
-                Years of Industry Expertise
+              <h3 className="text-xl sm:text-2xl font-semibold mb-6 text-gray-100">
+                Years of Industry Expertise in AI, ML & GenAI
               </h3>
 
-              <p className="text-sm lg:text-xl  leading-relaxed text-gray-200 mb-5">
-                Our experts from{" "}
-                <strong className="text-yellow-400 items-center">
-                  JPR Technosoft
-                </strong>{" "}
-                have been at the forefront of AI/ML innovation, working on
-                enterprise-scale solutions, real-time ML pipelines, and
-                cutting-edge GenAI applications.{" "}
+              {/* Description */}
+              <p className="text-base sm:text-lg leading-relaxed text-gray-300 mb-8">
+                With over{" "}
+                <span className="font-semibold text-yellow-400">15 years</span>{" "}
+                of hands-on experience, our experts at{" "}
+                <strong className="text-yellow-400">JPR Technosoft</strong>
+                have built enterprise-scale solutions, real-time ML pipelines,
+                and cutting-edge Generative AI applications.
+              </p>
+              <p className="text-base sm:text-lg leading-relaxed text-gray-300 mb-10">
+                Unlike traditional tutorials, we provide{" "}
+                <span className="font-semibold text-yellow-400">
+                  real-world, career-focused coaching
+                </span>
+                — helping professionals transform their careers with practical
+                mentorship.
               </p>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 text-sm">
+              {/* Expertise Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-sm sm:text-base">
+                <div className="flex items-center justify-center gap-2">
+                  <Users className="w-5 h-5 text-purple-400" />
+                  <span>Mentorship & Coaching</span>
+                </div>
                 <div className="flex items-center justify-center gap-2">
                   <Brain className="w-5 h-5 text-blue-400" />
                   <span>AI/ML Architecture</span>
@@ -462,67 +406,11 @@ const GenAIWebinarLanding = () => {
                   <Code className="w-5 h-5 text-green-400" />
                   <span>Production Systems</span>
                 </div>
-                <div className="flex items-center justify-center gap-2">
-                  <Trophy className="w-5 h-5 text-yellow-400" />
-                  <span>Team Leadership</span>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Curriculum Section */}
-      {/* <section className="bg-gray-50 py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-800">
-              What You'll Learn
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              A comprehensive curriculum designed to transform your career in
-              just one intensive session
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto space-y-6">
-            {curriculum.map((module, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border-l-4 border-gradient-to-b from-blue-500 to-purple-600">
-                <div className="p-6 sm:p-8">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4">
-                    <div className="flex items-center gap-4 mb-4 sm:mb-0">
-                      <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-3 py-1 rounded-full text-sm font-bold">
-                        {module.module}
-                      </div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-gray-800">
-                        {module.title}
-                      </h3>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-600">
-                      <Clock className="w-4 h-4" />
-                      <span className="font-semibold">{module.duration}</span>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                    {module.topics.map((topic, topicIndex) => (
-                      <div
-                        key={topicIndex}
-                        className="bg-gray-50 rounded-lg p-3 text-center">
-                        <span className="text-sm font-medium text-gray-700">
-                          {topic}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
 
       <section className="bg-gray-50 py-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -627,12 +515,12 @@ const GenAIWebinarLanding = () => {
       <section className="bg-gradient-to-br from-green-50 to-blue-50 py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl sm:text-5xl font-bold text-center mb-3 text-gray-800">
-            What Makes This Webinar Different?
+            What Makes This Program Different?
           </h2>
           <h3 className=" font-bold text-center  text-gray-800">
             Not a Tutorial. Not a Course
           </h3>
-          <p className="  text-center mb-6 text-gray-800">
+          <p className="text-center mb-6 text-gray-800">
             This is not about walking through code or tools that change every
             few weeks. This is practical, career-focused guidance on:
           </p>
@@ -998,16 +886,11 @@ const GenAIWebinarLanding = () => {
 
             <p className="text-xl sm:text-2xl mb-8 text-blue-100 leading-relaxed">
               Join thousands of professionals who have successfully transitioned
-              into high-paying GenAI careers. Your future in AI starts with this
-              webinar.
+              into high-paying GenAI careers. Your future in AI starts with
+              program.
             </p>
 
             <div className="space-y-6 flex flex-col justify-center items-center">
-              <EnrollButton
-                route="/register/genai-using-python-mastery-course"
-                className="w-full rounded-2xl text-lg py-4"
-              />
-
               <div className="flex items-center justify-center gap-4 text-sm">
                 <div className="flex items-center gap-2">
                   <Shield className="w-4 h-4 text-green-400" />
