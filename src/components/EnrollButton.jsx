@@ -23,9 +23,15 @@ const EnrollButton = ({ route, className = "", variant = "primary" }) => {
       <div className="absolute inset-0 bg-white/20 rounded-full scale-0 group-hover:scale-100 transition-transform duration-500" />
       <div className="flex items-center gap-2 relative z-10">
         <Rocket className="w-5 h-5" />
-        <span>Enroll Now</span>
-        <IndianRupee className="w-4 h-4" />
-        <span>99 FREE</span>
+        <div>
+          <div>Enroll Now</div>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="flex items-center"><IndianRupee className="w-4 h-4" />
+          <div>99</div>
+          </div>
+          <span> FREE</span>
+        </div>
       </div>
     </button>
   );
