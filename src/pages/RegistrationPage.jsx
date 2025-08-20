@@ -11,7 +11,7 @@ import {
 import axiosInstance from "../utils/axios";
 import AboutJprTechnosoft from "../components/AboutJprTechnosoft";
 import Footer from "../components/Footer";
-import logo from "../../public/jpr-logo.png";
+import logo from "/jpr-logo.png";
 
 const RegistrationPage = () => {
   const { slug } = useParams();

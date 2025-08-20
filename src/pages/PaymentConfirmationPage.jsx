@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import AboutJprTechnosoft from "../components/AboutJprTechnosoft";
 import Footer from "../components/Footer";
-import logo from "../../public/jpr-logo.png";
+import logo from "/jpr-logo.png";
 
 const PaymentConfirmationPage = () => {
   const { slug } = useParams();
