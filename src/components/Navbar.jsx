@@ -33,7 +33,7 @@ const Navbar = () => {
               to="/"
               className="text-2xl font-bold text-blue-400 hover:text-blue-300 transition-colors outline-none"
               onClick={closeMobileMenu}>
-              Be a Developer
+              JPR Technosoft
             </Link>
           </div>
 

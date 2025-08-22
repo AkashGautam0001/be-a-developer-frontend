@@ -10,6 +10,7 @@ import {
   Loader2,
 } from "lucide-react";
 import axiosInstance from "../../utils/axios";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -18,6 +19,7 @@ const Login = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { setAdmin } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,10 +32,9 @@ const Login = () => {
         password,
       });
 
-      console.log(result.data);
       if (result) {
         // setAdmin(result.data.admin);
-        navigate("/admin/dashboard");
+        navigate("/admin");
       } else {
         setError(result.data.message || "Login failed");
       }

@@ -24,13 +24,10 @@ const EnrollButton = ({ route, className = "", variant = "primary" }) => {
       <div className="flex items-center gap-2 relative z-10">
         <Rocket className="w-5 h-5" />
         <div>
-          <div>Enroll Now</div>
+          <div>Join Webinar </div>
         </div>
         <div className="flex items-center gap-2">
-          <div className="flex items-center"><IndianRupee className="w-4 h-4" />
-          <div>99</div>
-          </div>
-          <span> FREE</span>
+          <div className="flex items-center"></div>
         </div>
       </div>
     </button>

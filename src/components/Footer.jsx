@@ -16,36 +16,32 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-4">Quick Links</h4>
+            <h4 className="text-lg font-bold mb-4">Contact Info</h4>
             <div className="space-y-2 text-gray-400">
-              <div className="hover:text-white cursor-pointer transition-colors">
-                About Us
-              </div>
-              <div className="hover:text-white cursor-pointer transition-colors">
-                Courses
-              </div>
-              <div className="hover:text-white cursor-pointer transition-colors">
-                Success Stories
-              </div>
-              <div className="hover:text-white cursor-pointer transition-colors">
-                Contact
-              </div>
+              <div>📧 info@jprtechnosoft.com</div>
+              <div>📞 +91 8447087821</div>
             </div>
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-4">Contact Info</h4>
+            <h4 className="text-lg font-bold mb-4">Company Info</h4>
             <div className="space-y-2 text-gray-400">
-              <div>📧 support@jprtechnosoft.com</div>
-              <div>📞 +91 9876543210</div>
-              <div>🌐 www.jprtechnosoft.com</div>
-              <div>📍 Gurugram, Haryana, India</div>
+              <a
+                href="https://jprtechnosoft.com/"
+                target="_blank"
+                rel="noopener noreferrer">
+                🌐 jprtechnosoft.com
+              </a>
+              <div>
+                📍 Office No. 1142 11th Floor, Galaxy Diamond Plaza, Haibatpur,
+                Sector 4, Greater Noida, Uttar Pradesh 201009
+              </div>
             </div>
           </div>
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2024 JPR Technosoft. All rights reserved.</p>
+          <p>&copy; 2025 JPR Technosoft. All rights reserved.</p>
         </div>
       </div>
     </footer>

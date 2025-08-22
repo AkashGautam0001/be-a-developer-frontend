@@ -96,7 +96,7 @@ const Sidebar = ({ onToggleCollapse }) => {
       <div className="sticky z-10 top-0 flex items-center p-3 border-b border-zinc-800">
         {!collapsed && (
           <div className="ml-3 text-lg font-bold text-white font-body tracking-wide">
-            Be a Developer
+            JPR Technosoft
           </div>
         )}
         <div className="ml-auto flex items-center gap-2">
